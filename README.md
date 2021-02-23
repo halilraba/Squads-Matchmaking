@@ -7,5 +7,4 @@
 * Matthew Parker - Developer
 * Marcus Dorsey - Developer 
 
-
-Product Vision
+## Product Vision
