@@ -5,7 +5,7 @@ Dickson Diku - Product Owner;
 Brad Griffith - Scrum Master; 
 Halil Gunduz - Developer/Tester; 
 Matthew Parker - Developer; 
-MArcus Dorsey - Developer; 
+Marcus Dorsey - Developer; 
 
 
 Product Vision
