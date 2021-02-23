@@ -1,6 +1,6 @@
 # Squads Matchmaking
 
-## Scrum Team:
+## Scrum Team
 * Dickson Diku - Product Owner
 * Brad Griffith - Scrum Master
 * Halil Gunduz - Developer/Tester 
