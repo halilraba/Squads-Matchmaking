@@ -15,7 +15,7 @@ Our vision is to create a better gaming experience for players across multiple p
 ### [Link to Trello board](https://trello.com/b/qfcXvM8Z)
 
 ### Order Rationale
-
+Backlog items are ordered first by Priority (High to Low) and then by Story Points (lowest number to highest). This ordering will help the team identify which items are of highest value and can most efficiently be included in the Sprint. 
 
 ### Definition of Ready
 The Definition of Ready for all Product Backlog items includes:
