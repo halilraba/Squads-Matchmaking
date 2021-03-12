@@ -4,27 +4,31 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="sign-in-style.css">
+      <link rel="stylesheet" href="css/sign-in-style.css">
       <title>Registration Page</title>
   </head>
   <body>
     <!--<form action="action_page.php" method="post">-->
     <div class="container">
-      <label for="email"><b>Email Address</b></label>
-      <input type="email" placeholder="Enter Email Address" name="email" required>
+      <form action="/" method="post">
+        <label for="email"><b>Email Address</b></label>
+        <input type="email" placeholder="Enter Email Address" name="email" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember">Remember me
-      </label>
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember">Remember me
+        </label>
+      </form>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw"><a href="new-registration-form.html">Sign Up</a></span>
+      <button type="button" class="cancelbtn">
+        <a href="javascript:history.back()">Cancel</a>
+      </button>
+      <span class="psw"><a href="/signup">Sign Up</a></span>
     </div>
   </body>
 </html>

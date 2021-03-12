@@ -4,10 +4,14 @@
   "description": "Squads Matchmaking",
   "main": "app.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.20"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.3.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

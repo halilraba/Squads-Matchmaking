@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sign-in-style.css">
+    <link rel="stylesheet" href="css/sign-in-style.css">
     <title>Sign In Page</title>
 </head>
 <body>
@@ -14,33 +14,36 @@
 </div> -->
 
 <div class="container">
-  <label><b>First Name</b></label>
-  <input type="text" placeholder="Enter First Name" name="fname" required>
+  <form action="/signup" method="post">
+    <label><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="fname" required>
 
-  <label><b>Last Name</b></label>
-  <input type="text" placeholder="Enter Last Name" name="lname" required>
+    <label><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="lname" required>
 
-  <label><b>Email</b></label>
-  <input type="email" placeholder="Enter Email Address" name="email" required>
+    <label><b>Email</b></label>
+    <input type="email" placeholder="Enter Email Address" name="email" required>
 
-  <label><b>Birth date</b></label>
-  <input type="date" name="bdate"required>
+    <label><b>Birth date</b></label>
+    <input type="date" name="bdate"required>
 
-  <label><b>Call of Duty Username</b></label>
-  <input type="text" placeholder="Enter Call of Duty Username" name="codName" required>
+    <label><b>Call of Duty Username</b></label>
+    <input type="text" placeholder="Enter Call of Duty Username" name="codName" required>
 
-  <label><b>Fortnite Username</b></label>
-  <input type="text" placeholder="Enter Fortnite Username" name="fortniteName"required>
+    <label><b>Fortnite Username</b></label>
+    <input type="text" placeholder="Enter Fortnite Username" name="fortniteName" required>
 
-  <label><b>Password</b></label>
-  <input type="text" placeholder="Enter Password"name="psw" required>
+    <label><b>Password</b></label>
+    <input type="text" placeholder="Enter Password" name="psw" required>
 
-  <button type="submit">Submit</button>
-
+    <button type="submit">Submit</button>
+  </form>
 </div>
 
 <div class="container" style="background-color:#f1f1f1">
-  <button type="button" class="cancelbtn">Cancel</button>
+  <button type="button" class="cancelbtn">
+    <a href="javascript:history.back()">Cancel</a>
+  </button>
 </div>
 </form>
 </body>
