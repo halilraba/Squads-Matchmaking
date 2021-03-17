@@ -7,6 +7,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 
 const User = require(__dirname + "/models/user-model.js");
+const apiCalls = require(__dirname + "/api-calls.js");
 const crud = require(__dirname + "/crud.js");
 
 const app = express();
@@ -80,10 +81,13 @@ app.get("/signup", (req, res) => {
 
 app.post("/signup", (req, res) => {
 
-    // crud.verifyUserNames(req.body.squadsName, req.body.codName, req.body.fortniteName, (userFound)=> {
-    //     if (userFound) {
-    //         res.redirect("/signup");
-    //     } else {
+    apiCalls.checkUserAccounts(req.body.fortniteName, req.body.squadsName, (fortniteData, squadsUser)=> {
+
+        if (!fortniteData || squadsUser) {
+            res.redirect("/signup");
+        } else {
+
+            // Create and authenticate user 
             User.register({
                 email: req.body.email,
                 firstName: req.body.fname,
@@ -98,12 +102,18 @@ app.post("/signup", (req, res) => {
                     res.redirect("/signup");
                 } else {
                     passport.authenticate("local")(req, res, function() {
+                        // Create user game stat document if username entered
+                        if (req.body.fortniteName) {
+                            console.log("Executing crud function");
+                            crud.createNewStatDocument(req.body.squadsName, fortniteData);
+                        }
+
                         res.redirect("/");
                     });
                 }
             });
-    //     }
-    // });
+        }
+    });
 });
 
 
