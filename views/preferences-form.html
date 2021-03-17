@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="sign-in-style.css">
+      <title>Preferences Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Preferences</h1>
+      <form action="/login" method="post">
+
+        <b style="font-size: 20px">Number of players:</b>
+        <br>
+        <label for="duos">Duos</label>
+        <input type="checkbox" name="duos">
+        <br>
+        <label for="trios">Trios</label>
+        <input type="checkbox" name="trios">
+        <br>
+        <label for="squads">Squads</label>
+        <input type="checkbox" name="squads">
+        <br>
+
+        <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
+        <br>
+        <label for="casual">Causual</label>
+        <input type="checkbox" name="casual">
+        <br>
+        <label for="ranked">Ranked</label>
+        <input type="checkbox" name="ranked">
+        <br>
+        <label for="both">Both</label>
+        <input type="checkbox" name="allModes">
+        <br>
+
+        <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
+        <br>
+        <label for="casual">Competitions</label>
+        <input type="checkbox" name="competitions">
+        <br>
+        <label for="ranked">Exhibitions</label>
+        <input type="checkbox" name="exhibitions">
+        <br>
+        <label for="both">Both</label>
+        <input type="checkbox" name="both">
+        <br>
+
+        <b style="font-size: 20px">Do you prfer to have more fun or be more competitive?</b>
+        <p>(Left represents fun and right represents competitive)</p>
+        <br>
+        <input type="range" min="1" max="100" value="50" class="slider">
+        <br>
+
+        <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
+        <p>(Left represents risk taker and right represents conservative)</p>
+        <br>
+        <input type="range" min="1" max="100" value="50" class="slider">
+        <br>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <form action="/" method="GET">
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="submit" class="cancelbtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
