@@ -46,16 +46,20 @@ app.get("/", (req, res) => {
     if (req.isAuthenticated()){
         res.sendFile(__dirname + "/views/user-profile.html");
     } else {
-        res.redirect("/login");
-        // res.sendFile(__dirname + "/views/index.html")
+        // res.redirect("/signin");
+        res.sendFile(__dirname + "/views/index.html")
     }
 });
 
-app.get("/login", (req, res) => {
+app.get("/index", (req, res) => {
+    res.sendFile(__dirname + "/views/index.html")
+});
+
+app.get("/signin", (req, res) => {
     res.sendFile(__dirname + "/views/sign-in.html");
 });
 
-app.post("/login", (req, res) => {
+app.post("/signin", (req, res) => {
     
     const user = new User({
         email: req.body.email,
@@ -68,7 +72,7 @@ app.post("/login", (req, res) => {
         } else {
             passport.authenticate("local", {
                 successfulRedirect: "/",
-                failureRedirect: "/login"})(req, res, function() {
+                failureRedirect: "/signin"})(req, res, function() {
                 res.redirect("/");
             });
         }
@@ -118,6 +122,7 @@ app.post("/signup", (req, res) => {
 
 
 
+
 let port = process.env.PORT;
 if (port == null || port == "") {
     port = 3000;
@@ -125,3 +130,5 @@ if (port == null || port == "") {
 app.listen(port, () => {
     console.log("Server has started successfully.")
 });
+
+module.exports = app;
