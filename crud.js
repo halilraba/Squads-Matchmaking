@@ -34,7 +34,6 @@ exports.createNewStatDocument = function (squadsName, fortniteData) {
             fortniteWinRate: winRate
         });
 
-        console.log(newStatDoc);
         newStatDoc.save(function (err, doc) {
             if (err) {
                 console.log(err);

@@ -14,50 +14,53 @@
 
         <b style="font-size: 20px">Number of players:</b>
         <br>
+        <label for="solo">Solo</label>
+        <input type="checkbox" name="solo" value="Y">
+        <br>
         <label for="duos">Duos</label>
-        <input type="checkbox" name="duos">
+        <input type="checkbox" name="duos" value="Y">
         <br>
         <label for="trios">Trios</label>
-        <input type="checkbox" name="trios">
+        <input type="checkbox" name="trios" value="Y">
         <br>
         <label for="squads">Squads</label>
-        <input type="checkbox" name="squads">
+        <input type="checkbox" name="squads" value="Y">
         <br>
 
         <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
         <br>
-        <label for="casual">Causual</label>
-        <input type="checkbox" name="casual">
+        <label for="casual">Casual</label>
+        <input type="checkbox" name="casual" value="Y">
         <br>
         <label for="ranked">Ranked</label>
-        <input type="checkbox" name="ranked">
+        <input type="checkbox" name="ranked" value="Y">
         <br>
-        <label for="both">Both</label>
+        <!-- <label for="both">Both</label>
         <input type="checkbox" name="allModes">
-        <br>
+        <br> -->
 
         <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
         <br>
-        <label for="casual">Competitions</label>
-        <input type="checkbox" name="competitions">
+        <label for="competitions">Competitions</label>
+        <input type="checkbox" name="competitions" value="Y">
         <br>
-        <label for="ranked">Exhibitions</label>
-        <input type="checkbox" name="exhibitions">
+        <label for="exhibitions">Exhibitions</label>
+        <input type="checkbox" name="exhibitions" value="Y">
         <br>
-        <label for="both">Both</label>
+        <!-- <label for="both">Both</label>
         <input type="checkbox" name="both">
-        <br>
+        <br> -->
 
-        <b style="font-size: 20px">Do you prfer to have more fun or be more competitive?</b>
+        <b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b>
         <p>(Left represents fun and right represents competitive)</p>
         <br>
-        <input type="range" min="1" max="100" value="50" class="slider">
+        <input type="range" min="1" max="100" value="50" class="slider" name="funScale">
         <br>
 
         <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
         <p>(Left represents risk taker and right represents conservative)</p>
         <br>
-        <input type="range" min="1" max="100" value="50" class="slider">
+        <input type="range" min="1" max="100" value="50" class="slider" name="riskScale">
         <br>
 
         <button type="submit">Submit</button>

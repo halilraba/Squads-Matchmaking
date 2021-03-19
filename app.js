@@ -44,10 +44,18 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", (req, res) => {
     
     if (req.isAuthenticated()){
-        res.sendFile(__dirname + "/views/user-profile.html");
+        res.redirect("/profile");
     } else {
-        // res.redirect("/signin");
-        res.sendFile(__dirname + "/views/index.html")
+        res.redirect("/index");
+    }
+});
+
+app.get("/profile", (req, res) => {
+
+    if (req.isAuthenticated()){
+        res.sendFile(__dirname + "/views/user-profile.html")
+    } else {
+        res.redirect("/signin");
     }
 });
 
@@ -108,7 +116,6 @@ app.post("/signup", (req, res) => {
                     passport.authenticate("local")(req, res, function() {
                         // Create user game stat document if username entered
                         if (req.body.fortniteName) {
-                            console.log("Executing crud function");
                             crud.createNewStatDocument(req.body.squadsName, fortniteData);
                         }
 
@@ -122,13 +129,15 @@ app.post("/signup", (req, res) => {
 
 
 
-
 let port = process.env.PORT;
 if (port == null || port == "") {
     port = 3000;
 }
-app.listen(port, () => {
-    console.log("Server has started successfully.")
-});
+
+if (!process.env.TEST) {
+    app.listen(port, () => {
+        console.log("Server has started successfully.")
+    });
+}
 
 module.exports = app;

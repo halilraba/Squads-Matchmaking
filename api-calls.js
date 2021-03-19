@@ -13,6 +13,7 @@ exports.checkUserAccounts = async function (fortniteName, squadsName, callback) 
         fortniteData = await getFortniteData(fortniteName);
     }
 
+    // Return whether fortnite user !exist or squads user already exists 
     callback(fortniteData, squadsUser);
 }
 
