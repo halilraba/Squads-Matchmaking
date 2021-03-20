@@ -28,7 +28,7 @@ exports.createNewStatDocument = function (squadsName, fortniteData) {
         const name = squadsName;
         
         const newStatDoc = new GameStat({
-            squadsName: name,
+            email: name,
             fortniteScorePerMatch: scorePerMatch,
             fortniteKD: kd,
             fortniteWinRate: winRate

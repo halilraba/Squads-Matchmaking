@@ -4,132 +4,63 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- <link rel="stylesheet" href="sign-in-style.css"> -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/sign-in-style.css">
       <title>Preferences Form</title>
   </head>
   <body>
     <div class="container">
       <h1>Preferences</h1>
-      <form action="/preferences" method="POST">
-        <fieldset>
-          <b style="font-size: 20px">Number of players:</b>
-          <!-- <br>
-          <label for="duos">Duos</label>
-          <input type="checkbox" name="duos">
-          <br>
-          <label for="trios">Trios</label>
-          <input type="checkbox" name="trios">
-          <br>
-          <label for="squads">Squads</label>
-          <input type="checkbox" name="squads">
-          <br> -->
+      <form action="/preferences" method="post">
 
+        <b style="font-size: 20px">Number of players:</b>
+        <br>
+        <label for="duos">Duos</label>
+        <input type="checkbox" name="duos" value="Y">
+        <br>
+        <label for="trios">Trios</label>
+        <input type="checkbox" name="trios" value="Y">
+        <br>
+        <label for="squads">Squads</label>
+        <input type="checkbox" name="squads" value="Y">
+        <br>
 
-          <div>
-            <input type="radio" value="Duo" id="duo" name="numberOfPlayers"/>
-            <label for="duo" class="radio"><span>Duo</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Trio" id="trio" name="numberOfPlayers"/>
-            <label for="trio" class="radio"><span>Trio</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Squad" id="squad" name="numberOfPlayers"/>
-            <label for="squad" class="radio"><span>Squad</span></label>
-          </div>
-        </fieldset>
-        
-        <fieldset>
-          <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
-          <!-- <br>
-          <label for="casual">Causual</label>
-          <input type="checkbox" name="casual">
-          <br>
-          <label for="ranked">Ranked</label>
-          <input type="checkbox" name="ranked">
-          <br>
-          <label for="both">Both</label>
-          <input type="checkbox" name="allModes">
-          <br> -->
-
-          <div>
-            <input type="radio" value="Casual" id="casual" name="rankingMode"/>
-            <label for="casual" class="radio"><span>Casual</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Ranked" id="ranked" name="rankingMode"/>
-            <label for="ranked" class="radio"><span>Ranked</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Both" id="both" name="rankingMode"/>
-            <label for="both" class="radio"><span>Both</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
-          <!-- <br>
-          <label for="casual">Competitions</label>
-          <input type="checkbox" name="competitions">
-          <br>
-          <label for="ranked">Exhibitions</label>
-          <input type="checkbox" name="exhibitions">
-          <br>
-          <label for="both">Both</label>
-          <input type="checkbox" name="both">
-          <br> -->
-
-          <div>
-            <input type="radio" value="Competition" id="competition" name="playMode"/>
-            <label for="competition" class="radio"><span>Competition</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Exhibition" id="exhibition" name="playMode"/>
-            <label for="exhibition" class="radio"><span>Exhibition</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Both" id="both2" name="playMode"/>
-            <label for="both2" class="radio"><span>Both</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b>
-        <!-- <p>(Left represents fun and right represents competitive)</p> -->
-        <!-- <br>
-        <input type="range" min="1" max="100" value="50" class="slider">
+        <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
+        <br>
+        <label for="casual">Casual</label>
+        <input type="checkbox" name="casual" value="Y">
+        <br>
+        <label for="ranked">Ranked</label>
+        <input type="checkbox" name="ranked" value="Y">
+        <br>
+        <!-- <label for="both">Both</label>
+        <input type="checkbox" name="allModes">
         <br> -->
 
-        <div>
-          <input type="radio" value="More fun" id="fun" name="competitionMode"/>
-          <label for="fun" class="radio"><span>More fun</span></label>
-        </div>
-        <div>
-          <input  type="radio" value="More competitive" id="competitive" name="competitionMode"/>
-          <label for="competitive" class="radio"><span>More competitive</span></label>
-        </div>
-      
-        </fieldset>
+        <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
+        <br>
+        <label for="competitions">Competitions</label>
+        <input type="checkbox" name="competitions" value="Y">
+        <br>
+        <label for="exhibitions">Exhibitions</label>
+        <input type="checkbox" name="exhibitions" value="Y">
+        <br>
+        <!-- <label for="both">Both</label>
+        <input type="checkbox" name="both">
+        <br> -->
 
-        <fieldset>
-          
-          <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
-          <!-- <p>(Left represents risk taker and right represents conservative)</p>
-          <br> -->
-          <!-- <input type="range" min="1" max="100" value="50" class="slider">
-          <br> --> 
-          <div>
-            <input type="radio" value="Risk taker" id="fun" name="riskMode"/>
-            <label for="fun" class="radio"><span>Risk taker</span></label>
-          </div>
-          <div>
-            <input  type="radio" value="Conservative" id="conservative" name="riskMode"/>
-            <label for="conservative" class="radio"><span>Conservative</span></label>
-          </div>
-        </fieldset>
+        <b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b>
+        <p>(Left represents fun and right represents competitive)</p>
+        <br>
+        <input type="range" min="1" max="100" value="50" class="slider" name="funScale">
+        <br>
 
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
+        <p>(Left represents risk taker and right represents conservative)</p>
+        <br>
+        <input type="range" min="1" max="100" value="50" class="slider" name="riskScale">
+        <br>
+
+        <button type="submit">Submit</button>
       </form>
     </div>
 

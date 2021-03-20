@@ -4,8 +4,8 @@ const router = express.Router();
 //const checkAuth
 const playerPreferencesController = require('../controllers/playerPreferencesController');
 
-//Handling incoming GET requests
-//router.get('/', playerPreferences.getPlayerPreferences);
+// Handling incoming GET requests
+router.get('/', playerPreferencesController.getPlayerPreferences);
 
 /**
  * Handling POST requests

@@ -37,13 +37,19 @@ describe("API Calls", function() {
     //     }); 
     // });
 
-    it("should return Squadsname if user already exists", function(done) { 
+    it("should return Squadsname if user already exists", async function() { 
+      this.timeout(5000);
+      this.slow(4000);
       let squadsName = "frodo9";
       let fortniteName = "fool-of-Took";
 
-      apiCalls.checkUserAccounts(fortniteName, squadsName, (fortniteData, squadsUser)=> {
-        expect(squadsUser).to.not.be.null;
-        done();
+      let promise = new Promise((resolve, reject) => {
+        apiCalls.checkUserAccounts(fortniteName, squadsName, (fortniteData, squadsUser)=> {
+          expect(squadsUser).to.not.be.null;
+          resolve();
+        });
       });
+
+      await promise;
     });
 });

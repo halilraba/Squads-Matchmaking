@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-const preferenceSchema = {
-    squadsName: String,
-    solo: String,
+const preferenceSchema = new mongoose.Schema({
+    email: String,
     duos: String,
     trios: String,
     squads: String,
@@ -12,7 +11,7 @@ const preferenceSchema = {
     exhibitions: String,
     funScale: Number,
     riskScale:Number
-};
+});
 
 // const preferenceSchema = mongoose.Schema({
 

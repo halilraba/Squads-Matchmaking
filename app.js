@@ -12,7 +12,7 @@ const User = require(__dirname + "/models/user-model.js");
 const apiCalls = require(__dirname + "/api-calls.js");
 const crud = require(__dirname + "/crud.js");
 
-const playerPreferencesRoutes = require(__dirname + '/routes/playerPeferences.route.js');
+const playerPreferencesRoutes = require(__dirname + '/routes/playerPreferences.route.js');
 
 const app = express();
 
@@ -74,7 +74,7 @@ app.get("/signin", (req, res) => {
 });
 
 app.post("/signin", (req, res) => {
-    
+
     const user = new User({
         email: req.body.email,
         password: req.body.password
@@ -88,6 +88,8 @@ app.post("/signin", (req, res) => {
                 successfulRedirect: "/",
                 failureRedirect: "/signin"})(req, res, function() {
                 res.redirect("/");
+                req.session.email = req.body.email;
+                req.session.save();
             });
         }
     });
@@ -125,7 +127,7 @@ app.post("/signup", (req, res) => {
                             crud.createNewStatDocument(req.body.squadsName, fortniteData);
                         }
 
-                        res.redirect("/");
+                        res.redirect("/preferences");
                     });
                 }
             });
@@ -134,25 +136,8 @@ app.post("/signup", (req, res) => {
 });
 
 
-
-<<<<<<< HEAD
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 3000;
-}
-
-if (!process.env.TEST) {
-    app.listen(port, () => {
-        console.log("Server has started successfully.")
-    });
-}
-=======
 app.use('/preferences', playerPreferencesRoutes);
 
-app.get('/preferences', (req, res) => {
-    res.sendFile(__dirname + "/views/preferences-form.html");
-});
->>>>>>> 126dd02f59d47ce646cf6ad8f72d01e03ece058b
 
 app.use((req, res, next) => {
     const error = new Error('Not found');
@@ -160,13 +145,5 @@ app.use((req, res, next) => {
     next(error);
 });
 
-// moved to server.js
-// let port = process.env.PORT;
-// if (port == null || port == "") {
-//     port = 3000;
-// }
-// app.listen(port, () => {
-//     console.log("Server has started successfully.")
-// });
 
 module.exports = app;

@@ -30,11 +30,13 @@ var authenticatedUser = request.agent(app);
 var newUser = request.agent(app);
 
 before(function(done) {
+  this.timeout(5000);
   newUser
   .post('/signup')
   .send(userRegistration)
+  
   .expect(302)
-  .expect('Location', '/')
+  .expect('Location', '/preferences')
   .set('Content-Type', 'application/x-www-form-urlencoded')
   .end(function(err, res){
     if (err) {
@@ -47,7 +49,8 @@ before(function(done) {
 });
 
 before(function(done){
- authenticatedUser
+  this.timeout(5000);
+  authenticatedUser
   .post('/signin')
   .send(userCredentials)
   .expect(302)
