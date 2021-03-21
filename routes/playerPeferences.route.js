@@ -5,7 +5,7 @@ const router = express.Router();
 const playerPreferencesController = require('../controllers/playerPreferencesController');
 
 //Handling incoming GET requests
-//router.get('/', playerPreferences.getPlayerPreferences);
+router.get('/getAllPreferences', playerPreferencesController.getPlayersPreferences);
 
 /**
  * Handling POST requests
