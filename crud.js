@@ -28,13 +28,12 @@ exports.createNewStatDocument = function (squadsName, fortniteData) {
         const name = squadsName;
         
         const newStatDoc = new GameStat({
-            squadsName: name,
+            email: name,
             fortniteScorePerMatch: scorePerMatch,
             fortniteKD: kd,
             fortniteWinRate: winRate
         });
 
-        console.log(newStatDoc);
         newStatDoc.save(function (err, doc) {
             if (err) {
                 console.log(err);

@@ -3,13 +3,13 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- <link rel="stylesheet" href="sign-in-style.css"> -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/sign-in-style.css">
       <title>Preferences Form</title>
   </head>
   <body>
     <div class="container">
       <h1>Preferences</h1>
+<<<<<<< HEAD
       
 
     <div class="container" style="background-color:#f1f1f1">
@@ -81,11 +81,76 @@
       
           <button type="submit" class="btn btn-primary">Submit</button>
        
+=======
+      <form action="/preferences" method="post">
+
+        <b style="font-size: 20px">Number of players:</b>
+        <br>
+        <label for="duos">Duos</label>
+        <input type="checkbox" name="duos" value="Y">
+        <br>
+        <label for="trios">Trios</label>
+        <input type="checkbox" name="trios" value="Y">
+        <br>
+        <label for="squads">Squads</label>
+        <input type="checkbox" name="squads" value="Y">
+        <br>
+
+        <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
+        <br>
+        <label for="casual">Casual</label>
+        <input type="checkbox" name="casual" value="Y">
+        <br>
+        <label for="ranked">Ranked</label>
+        <input type="checkbox" name="ranked" value="Y">
+        <br>
+        <!-- <label for="both">Both</label>
+        <input type="checkbox" name="allModes">
+        <br> -->
+
+        <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
+        <br>
+        <label for="competitions">Competitions</label>
+        <input type="checkbox" name="competitions" value="Y">
+        <br>
+        <label for="exhibitions">Exhibitions</label>
+        <input type="checkbox" name="exhibitions" value="Y">
+        <br>
+        <!-- <label for="both">Both</label>
+        <input type="checkbox" name="both">
+        <br> -->
+
+        <b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b>
+        <p>(Left represents fun and right represents competitive)</p>
+        <br>
+        <input type="range" min="1" max="100" value="50" class="slider" name="funScale">
+        <br>
+
+        <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
+        <p>(Left represents risk taker and right represents conservative)</p>
+        <br>
+        <input type="range" min="1" max="100" value="50" class="slider" name="riskScale">
+        <br>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <form action="/" method="GET">
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="submit" class="cancelbtn">Cancel</button>
+        </div>
+>>>>>>> fd4dd2f3fb7e5939eead7b1217950894ace7d0d2
       </form>
     </div>
     
   </body>
+<<<<<<< HEAD
 
 
   
 
+=======
+</html>
+>>>>>>> fd4dd2f3fb7e5939eead7b1217950894ace7d0d2
