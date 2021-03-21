@@ -275,7 +275,7 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -286,20 +286,20 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
             {
                 "level": "SEVERE",
                 "message": "https://squads-test.herokuapp.com/favicon.ico - Failed to load resource: the server responded with a status of 404 (Not Found)",
-                "timestamp": 1616297723578,
+                "timestamp": 1616297977356,
                 "type": ""
             }
         ],
-        "screenShotFile": "images/00c50009-00d3-004e-004c-0045004400a2.png",
-        "timestamp": 1616297722811,
-        "duration": 770
+        "screenShotFile": "images/000400af-00c0-0094-0041-005000070095.png",
+        "timestamp": 1616297976743,
+        "duration": 611
     },
     {
         "description": "should have correct welcome text|Index",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -307,16 +307,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00630011-00c1-006e-0066-004f0000003f.png",
-        "timestamp": 1616297724295,
-        "duration": 182
+        "screenShotFile": "images/003100ae-00ad-00c1-0076-0050006300c2.png",
+        "timestamp": 1616297977914,
+        "duration": 192
     },
     {
         "description": "should have login text and should links to signin page|Index",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -324,16 +324,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00310000-0062-00e9-0042-003b001000d7.png",
-        "timestamp": 1616297724919,
-        "duration": 244
+        "screenShotFile": "images/003800eb-0037-002e-0096-0084009f00d1.png",
+        "timestamp": 1616297978548,
+        "duration": 187
     },
     {
         "description": "should have signup text and should links to signup page|Index",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -341,16 +341,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/009e009c-0048-00af-0043-002e00f100f1.png",
-        "timestamp": 1616297725617,
-        "duration": 198
+        "screenShotFile": "images/00e600d8-0077-00b0-009d-001c00a4006f.png",
+        "timestamp": 1616297979158,
+        "duration": 218
     },
     {
         "description": "should have correct page title|Login ",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -358,16 +358,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00f2005b-00c7-003d-00fe-001e002a00a4.png",
-        "timestamp": 1616297726251,
-        "duration": 278
+        "screenShotFile": "images/00d000e1-006e-009d-0032-0004001e00f7.png",
+        "timestamp": 1616297979836,
+        "duration": 389
     },
     {
         "description": "should have email input box and should be required|Login ",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -375,16 +375,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00db00cc-0025-007c-006e-00e800db0074.png",
-        "timestamp": 1616297727457,
-        "duration": 308
+        "screenShotFile": "images/0040005f-003e-0066-002d-006000970002.png",
+        "timestamp": 1616297981142,
+        "duration": 329
     },
     {
         "description": "should have password input box and should be required|Login ",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -392,16 +392,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00c000e3-0095-000d-00d1-00c500c90004.png",
-        "timestamp": 1616297728225,
-        "duration": 320
+        "screenShotFile": "images/001d00a9-0023-009c-00d0-000e000900c3.png",
+        "timestamp": 1616297981895,
+        "duration": 335
     },
     {
         "description": "should have signup link to connect signup page|Login ",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -409,16 +409,16 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00f900e4-0095-00d4-00fd-007e000b00b9.png",
-        "timestamp": 1616297728979,
-        "duration": 317
+        "screenShotFile": "images/0052004e-004d-000a-00d9-0028008f0029.png",
+        "timestamp": 1616297983094,
+        "duration": 286
     },
     {
         "description": "should have login button and should not allow user to login without putting credentials|Login Functionalities",
         "passed": true,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
@@ -426,26 +426,30 @@ app.controller('ScreenshotReportController', ['$scope', '$http', 'TitleService',
         "message": "Passed.",
         "trace": "",
         "browserLogs": [],
-        "screenShotFile": "images/00de0010-0029-0045-00c9-00ba00520012.png",
-        "timestamp": 1616297729717,
-        "duration": 356
+        "screenShotFile": "images/00d30034-003f-00a5-0060-006300ef00bc.png",
+        "timestamp": 1616297984263,
+        "duration": 389
     },
     {
         "description": "should not allow user to login without valid credentials|Login Functionalities",
-        "passed": true,
+        "passed": false,
         "pending": false,
         "os": "Mac OS X",
-        "instanceId": 9085,
+        "instanceId": 9218,
         "browser": {
             "name": "chrome",
             "version": "89.0.4389.90"
         },
-        "message": "Passed.",
-        "trace": "",
+        "message": [
+            "Expected 'Sign In' to equal 'Sign '."
+        ],
+        "trace": [
+            "Error: Failed expectation\n    at UserContext.<anonymous> (/Users/hll/Documents/Squads-Matchmaking/test/Tests/Login.spec.js:59:36)\n    at /usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:112:25\n    at new ManagedPromise (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1077:7)\n    at ControlFlow.promise (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2505:12)\n    at schedulerExecute (/usr/local/lib/node_modules/protractor/node_modules/jasminewd2/index.js:95:18)\n    at TaskQueue.execute_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:3084:14)\n    at TaskQueue.executeNext_ (/usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:3067:27)\n    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2974:25\n    at /usr/local/lib/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:668:7"
+        ],
         "browserLogs": [],
-        "screenShotFile": "images/00c900b2-0043-00ae-00b0-006200110053.png",
-        "timestamp": 1616297730688,
-        "duration": 539
+        "screenShotFile": "images/008400a4-0014-0065-00ec-00db00f2000e.png",
+        "timestamp": 1616297985513,
+        "duration": 513
     }
 ];
 
