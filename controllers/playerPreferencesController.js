@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Preference = require('../models/preferences-model');
+const PlayerPreferences = require(__dirname + './../models/preferences-model');
 
 exports.createPlayerPreferences = (req, res) => {
         
@@ -19,39 +19,89 @@ exports.createPlayerPreferences = (req, res) => {
     playerPreferences
         .save()
         .then(result => {
+            console.log(result);
+            //res.redirect('/preferences')
+            res.status(201).json({
+                message: 'Player preferences successfully added',
+                createdPreferences:{
+                    numberOfPlayers: result.numberOfPlayers,
+                    rankingMode:result.rankingMode,
+                    playMode: result.playMode,
+                    competitionMode: result.competitionMode,
+                    riskMode: result.riskMode,
+                    _id: result._id,
 
-            res.redirect('/profile')
-            // res.status(201).json({
-            //     message: 'Player preferences successfully added',
-            //     createdPreferences:{
-            //         numberOfPlayers: result.numberOfPlayers,
-            //         rankingMode:result.rankingMode,
-            //         playMode: result.playMode,
-            //         competitionMode: result.competitionMode,
-            //         riskMode: result.riskMode,
-            //         _id: result._id,
-
-            //         request:{
-            //             type:'POST',
-            //             url:'/preferences' + result._id
-            //         }
-            //     }
+                    request:{
+                        type:'POST',
+                        url:'http://localhost:3000/preferences' + result._id
+                    }
+                }
                
-            // });
+            });
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json({error: err});
-        });
+        res.status(500).json({error: err});
+    });
 }
 
-exports.getPlayerPreferences = (req, res) => {
 
-    if (req.isAuthenticated()){
-        // res.sendFile(__dirname + '/../views/preferences-form.html');
-        res.sendFile('preferences-form.html', {'root': './views'});
-    } else {
-        res.redirect("/signin");
-    }
+exports.getPlayersPreferences = (res, req) => {
+    
+    PlayerPreferences.find()
+    .select(' numberOfPlayers rankingMode playMode competitionMode riskMode _id')
+    .exec()
+    .then( docs => {
+        const response = {
+            count: docs.length,
+            playerPreferences: docs.map(doc => {
+                return{
+                    numberOfPlayers: doc.numberOfPlayers,
+                    rankingMode: doc.rankingMode,
+                    playMode: doc.playMode,
+                    competitionMode: doc.competitionMode,
+                    riskMode: doc.riskMode,
+                    _id: doc._id,
+                    request:{
+                        type:'GET',
+                        url:'http://localhost:3000/get_preferences' + doc._id
+                    }
 
+                }
+            })
+        }
+        console.log(docs);
+            // res.status(200).json(response);
+    })
+    .catch(err => {
+        console.log(err);
+    // res.status(500).json({error: err}
+    //     );
+    });
+}
+
+exports.getPreferenceById =  (req, res, next) => {
+    const id = req.params.preferenceId;
+    PlayerPreferences.findOne(id)
+    .select('numberOfPlayers rankingMode playMode competitionMode riskMode _id')
+    .exec()
+    .then(doc => {
+        console.log('From database' + doc);
+        if (doc){
+            res.status(200).json({
+                preference: doc,
+                request:{
+                    type:'GET',
+                   // url: 'http://localhost/preferences/getPreferenceById' 
+                }
+            });
+        }
+        else{
+            res.status(404).json({message: 'No valid entry found for provided ID'});
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    });
 }

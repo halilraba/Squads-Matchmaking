@@ -89,7 +89,9 @@ async function getApexLegendsData(apexName) {
                 // port: 443,
                 path: '/' + accountType[i] + '/' + apexName,
                 method: 'GET',
-                headers: { "TRN-Api-Key" : process.env.API_KEY }
+                Accept: application/json,
+                "Accept-Encoding" : gzip,
+                "TRN-Api-Key" : process.env.API_KEY 
               };
                 
             https.request(apexOptions, (response) => {

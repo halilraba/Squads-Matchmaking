@@ -138,12 +138,16 @@ app.post("/signup", (req, res) => {
 
 app.use('/preferences', playerPreferencesRoutes);
 
-
-app.use((req, res, next) => {
-    const error = new Error('Not found');
-    error.status = 404;
-    next(error);
+app.get('/preferences', (req, res) => {
+    res.sendFile(__dirname + "/views/preferences-form.html");
 });
+
+
+// app.use((req, res, next) => {
+//     const error = new Error('Not found');
+//     error.status = 404;
+//     next(error);
+// });
 
 
 module.exports = app;

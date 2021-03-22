@@ -1,75 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+
   <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="css/sign-in-style.css">
+      <!-- <link rel="stylesheet" href="sign-in-style.css"> -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <title>Preferences Form</title>
   </head>
   <body>
     <div class="container">
       <h1>Preferences</h1>
-      <form action="/preferences" method="post">
-
-        <b style="font-size: 20px">Number of players:</b>
-        <br>
-        <label for="duos">Duos</label>
-        <input type="checkbox" name="duos" value="Y">
-        <br>
-        <label for="trios">Trios</label>
-        <input type="checkbox" name="trios" value="Y">
-        <br>
-        <label for="squads">Squads</label>
-        <input type="checkbox" name="squads" value="Y">
-        <br>
-
-        <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
-        <br>
-        <label for="casual">Casual</label>
-        <input type="checkbox" name="casual" value="Y">
-        <br>
-        <label for="ranked">Ranked</label>
-        <input type="checkbox" name="ranked" value="Y">
-        <br>
-        <!-- <label for="both">Both</label>
-        <input type="checkbox" name="allModes">
-        <br> -->
-
-        <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
-        <br>
-        <label for="competitions">Competitions</label>
-        <input type="checkbox" name="competitions" value="Y">
-        <br>
-        <label for="exhibitions">Exhibitions</label>
-        <input type="checkbox" name="exhibitions" value="Y">
-        <br>
-        <!-- <label for="both">Both</label>
-        <input type="checkbox" name="both">
-        <br> -->
-
-        <b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b>
-        <p>(Left represents fun and right represents competitive)</p>
-        <br>
-        <input type="range" min="1" max="100" value="50" class="slider" name="funScale">
-        <br>
-
-        <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
-        <p>(Left represents risk taker and right represents conservative)</p>
-        <br>
-        <input type="range" min="1" max="100" value="50" class="slider" name="riskScale">
-        <br>
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      
 
     <div class="container" style="background-color:#f1f1f1">
-      <form action="/" method="GET">
+      <!-- <form action="/" method="GET">
         <div class="container" style="background-color:#f1f1f1">
           <button type="submit" class="cancelbtn">Cancel</button>
         </div>
+      </form> -->
+
+      <form action="/preferences" method="POST">
+        <div class="form-group form-check">
+          <div class="col-sm-6">
+            <label for="exampleInputEmail1"><b style="font-size: 20px">Number of players:</b></label>
+            <small id="emailHelp" class="form-text text-muted">Select your preference:</small>
+            <div class="checkbox">
+              <label><input name="numberOfPlayers" type="checkbox" value="duo"> Duo</label>
+            </div>
+            <div class="checkbox">
+              <label><input name="numberOfPlayers" type="checkbox" value="duo"> Trio</label>
+            </div>
+            <div class="checkbox">
+              <label><input name="numberOfPlayers" type="checkbox" value="squad"> Squad</label>
+            </div>
+             
+          </div>
+
+          <div class="col-sm-6">
+            <label for="exampleInputEmail1"><b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b></label>
+            <small id="emailHelp" class="form-text text-muted">Select your preference(s):</small>
+            <div class="checkbox">
+              <label><input type="checkbox" value="Casual" id="casual" name="rankingMode"/> Casual</label>
+            </div>
+            <div class="checkbox">
+              <label><input  type="checkbox" value="ranked" id="ranked" name="rankingMode"/> Ranked</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label for="exampleInputEmail1"><b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b></label>
+            <small id="emailHelp" class="form-text text-muted">Select your preference(s):</small>
+            <div class="checkbox">
+              <label><input type="checkbox" value="competitions" id="competitions" name="playMode"/> Competitions</label>
+            </div>
+            <div class="checkbox">
+              <label><input  type="checkbox" value="exhibitions" id="exhibitions" name="playMode"/> Exhibitions</label>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="exampleInputEmail1"><b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b></label>
+            <small id="emailHelp" class="form-text text-muted">Select your preference(s):</small>
+            <div class="checkbox">
+              <label><input type="checkbox" value="fun" id="fun" name="competitionMode"/> More fun</label>
+            </div>
+            <div class="checkbox">
+              <label><input  type="checkbox" value="competitive" id="competitive" name="competitionMode"/> More competitive</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label for="exampleInputEmail1"><b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b></label>
+            <small id="emailHelp" class="form-text text-muted">Select your preference(s):</small>
+            <div class="checkbox">
+              <label><input type="checkbox" value="risk-taker" id="risk-taker" name="riskMode"/> Risk taker</label>
+            </div>
+            <div class="checkbox">
+              <label><input  type="checkbox" value="conservative" id="conservative" name="riskMode"/> Conservative</label>
+            </div>
+          </div>
+        </div>
+      
+          <button type="submit" class="btn btn-primary">Submit</button>
+       
       </form>
     </div>
+    
   </body>
-</html>
+
+
+  
+
