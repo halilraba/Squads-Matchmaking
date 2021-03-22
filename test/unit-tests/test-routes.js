@@ -4,10 +4,10 @@ process.env.TEST=true;
 // const expect = chai.expect;
 // const chaiUrl = require("chai-url");
 // const chaiHttp = require("chai-http");
-const app = require("../app.js");
-const User = require("../models/user-model.js");
-const GameStat = require("../models/gamestat-model.js");
-const Preference = require('../models/preferences-model');
+const app = require("../../app.js");
+const User = require("../../models/user-model.js");
+const GameStat = require("../../models/gamestat-model.js");
+const Preference = require('../../models/preferences-model');
 const request = require('supertest');
 
 

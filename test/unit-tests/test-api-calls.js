@@ -1,7 +1,7 @@
 const chai = require("chai");
 const expect = chai.expect;
-const apiCalls = require("../api-calls.js");
-const GameStat = require("../models/gamestat-model.js");
+const apiCalls = require("../../api-calls.js");
+const GameStat = require("../../models/gamestat-model.js");
 const request = require('supertest');
 
 
@@ -13,7 +13,7 @@ describe("API Calls", function() {
       let fortniteName = "fool-of-a-Took";
 
       let promise = new Promise((resolve, reject) => {
-        apiCalls.checkUserAccounts(fortniteName, squadsName, (fortniteData, squadsUser)=> {
+        apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
           expect(squadsUser).to.not.be.null;
           resolve();
         });
@@ -29,7 +29,7 @@ describe("API Calls", function() {
       let fortniteName = "fool-of-a-Took";
 
       let promise = new Promise((resolve, reject) => {
-        apiCalls.checkUserAccounts(fortniteName, squadsName, (fortniteData, squadsUser)=> {
+        apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
           expect(squadsUser).to.be.null;
           resolve();
         });
@@ -45,7 +45,7 @@ describe("API Calls", function() {
       let fortniteName = "fool-of-a-Took";
 
       let promise = new Promise((resolve, reject) => {
-        apiCalls.checkUserAccounts(fortniteName, squadsName, (fortniteData, squadsUser)=> {
+        apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
           expect(fortniteData).to.not.be.null;
           resolve();
         });
@@ -61,7 +61,7 @@ describe("API Calls", function() {
       let fortniteName = "xxx";
 
       let promise = new Promise((resolve, reject) => {
-        apiCalls.checkUserAccounts(fortniteName, squadsName, (fortniteData, squadsUser)=> {
+        apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
           expect(fortniteData).to.be.null;
           resolve();
         });

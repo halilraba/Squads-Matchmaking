@@ -28,6 +28,7 @@
   },
   "scripts": {
     "test": "protractor conf.js",
+    "unit": "mocha ./test/unit-tests",
     "dev": "nodemon server.js"
   },
   "repository": {

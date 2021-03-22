@@ -9,15 +9,16 @@ exports.checkUserAccounts = async function (apexName, fortniteName, squadsName, 
     const squadsUser = await crud.checkSquadsUsernameExists(squadsName);
     
     // Check if Apex Legends user exists by getting Apex Legends Game Data
+    var apexData = true;
     if (apexName) {
-        let apexData = await getApexLegendsData(apexName);
-        console.log(apexData);
+        apexData = await getApexLegendsData(apexName);
+        // console.log(apexData);
     } 
 
     // Check if Fortnite user exists by getting Fortnite Game Data 
     var fortniteData = true;
     if (fortniteName) {
-        let fortniteData = await getFortniteData(fortniteName);
+        fortniteData = await getFortniteData(fortniteName);
     }
 
     // Return whether fortnite user !exist or squads user already exists 
@@ -31,7 +32,7 @@ async function getFortniteData(fortniteName) {
     var accountType = ["epic","psn","xbl"];
     let fortniteData = {};
 
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < 3; i++) {
 
         let promise = new Promise((resolve, reject) => {
             
@@ -76,25 +77,22 @@ async function getFortniteData(fortniteName) {
 
 async function getApexLegendsData(apexName) {
 
-    var apexOptions = {};
     var accountType = ["origin","psn","xbl"];
     let apexData = {};
 
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < 3; i++) {
 
         let promise = new Promise((resolve, reject) => {
-            
-            apexOptions = {
-                hostname: 'https://public-api.tracker.gg/v2/apex/standard/profile',
-                // port: 443,
-                path: '/' + accountType[i] + '/' + apexName,
-                method: 'GET',
-                Accept: application/json,
-                "Accept-Encoding" : gzip,
-                "TRN-Api-Key" : process.env.API_KEY 
-              };
+
+            let apexHost = "https://public-api.tracker.gg/v2/apex/standard/profile";
+            let apexPath = '/' + accountType[i] + '/' + apexName;
+            let apexKey = '?TRN-Api-Key=' + process.env.API_KEY;
+            let apexURL = apexHost + apexPath + apexKey;
+
+            // console.log("i = " + i)
+            // console.log(apexURL);
                 
-            https.request(apexOptions, (response) => {
+            https.get(apexURL, (response) => {
 
                 if (response.statusCode === 200) {
                     let result = '';
@@ -106,12 +104,19 @@ async function getApexLegendsData(apexName) {
                     response.on('end', () => {                       
                         let apexParse = JSON.parse(result);
 
-                        console.log(apexParse);
+                        // console.log(apexParse);
 
                         apexData.apexName = apexName;
-                        apexData.level = apexParse.data.segments.stats.level;
-                        apexData.kills = apexParse.data.segments.stats.kills;
-                        apexData.damage = apexParse.data.ssegments.stats.damage;
+                        apexData.level = apexParse.data.segments[0].stats.level.value;
+                        let apexStats = apexParse.data.metadata.activeLegendStats; 
+                        if (apexStats) {
+                            if (apexStats.includes("Kills")) {
+                                apexData.kills = apexParse.data.segments[0].stats.kills.value;
+                            }
+                            if (apexStats.includes("Damage")) {
+                                apexData.damage = apexParse.data.segments[0].stats.damage.value;
+                            }
+                        }
 
                         resolve(true);
                     });        
