@@ -1,13 +1,77 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Signed In Successfully</h1>
-    <h2>This is where User Profile Page will be.</h2>
-</body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="user-profile.css">
+    <title>Profile Page</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="main-body">
+
+              <!-- Breadcrumb -->
+              <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                </ol>
+              </nav>
+              <!-- /Breadcrumb -->
+
+              <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                        <img src="default-profile-pic.jpeg" alt="profie pic" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                          <h4>@fakeUsername</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="row">
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h4 class="mb-0">Call of Duty Stats</h4>
+                        <p>Games Played:</p>
+                        <p>Wins:</p>
+                        <p>W/L Ratio:</p>
+                        <p>Elim/D Ratio:</p>
+                        <p>Eliminations:</p>
+                        <p>Deaths:</p>
+                      </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h4 class="mb-0">Fortnite Stats</h4>
+                      <p>Games Played:</p>
+                      <p>Wins:</p>
+                      <p>W/L Ratio:</p>
+                      <p>Elim/D Ratio:</p>
+                      <p>Eliminations:</p>
+                      <p>Deaths:</p>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    </div>
+                  </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
