@@ -101,7 +101,7 @@ app.get("/signup", (req, res) => {
 
 app.post("/signup", (req, res) => {
 
-    apiCalls.checkUserAccounts(req.body.fortniteName, req.body.squadsName, (fortniteData, squadsUser)=> {
+    apiCalls.checkUserAccounts(req.body.apexName, req.body.fortniteName, req.body.squadsName, (apexData, fortniteData, squadsUser)=> {
 
         if (!fortniteData || squadsUser) {
             res.redirect("/signup");
@@ -114,7 +114,7 @@ app.post("/signup", (req, res) => {
                 lastName: req.body.lname,
                 birthDate: req.body.bdate,
                 squadsName: req.body.squadsName,
-                codName: req.body.codName,
+                apexName: req.body.apexName,
                 fortniteName: req.body.fortniteName
             }, req.body.password, function(err, user) {
                 if (err) {
@@ -124,7 +124,7 @@ app.post("/signup", (req, res) => {
                     passport.authenticate("local")(req, res, function() {
                         // Create user game stat document if username entered
                         if (req.body.fortniteName) {
-                            crud.createNewStatDocument(req.body.squadsName, fortniteData);
+                            crud.createNewStatDocument(req.body.email, req.body.fortniteName, fortniteData);
                         }
 
                         res.redirect("/preferences");

@@ -19,16 +19,17 @@ exports.checkSquadsUsernameExists = async function (squadsName) {
     return result;
 }
 
-exports.createNewStatDocument = function (squadsName, fortniteData) {
+exports.createNewStatDocument = function (email, fortniteName, fortniteData) {
 
     if (fortniteData) {
         const scorePerMatch = fortniteData.scorePerMatch;
         const kd = fortniteData.kd;
         const winRate = fortniteData.winRate;
-        const name = squadsName;
+        const emailKey = email;
         
         const newStatDoc = new GameStat({
-            email: name,
+            email: emailKey,
+            fortniteName: fortniteName,
             fortniteScorePerMatch: scorePerMatch,
             fortniteKD: kd,
             fortniteWinRate: winRate

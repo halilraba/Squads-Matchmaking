@@ -1,10 +1,15 @@
 const mongoose = require("mongoose");
 
 const gameStatSchema = new mongoose.Schema ({
-    squadsName: String,
+    email: String,
+    fortniteName: String,
     fortniteScorePerMatch: Number,
     fortniteKD: Number,
-    fortniteWinRate: Number
+    fortniteWinRate: Number,
+    apexName: String,
+    apexLevel: Number,
+    apexKills: Number,
+    apexDamage: Number
 });
 
 const GameStat = new mongoose.model("GameStat", gameStatSchema);

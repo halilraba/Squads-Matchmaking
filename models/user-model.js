@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema ({
     lastName: String,
     birthDate: String,
     squadsName: String,
-    codName: String,
+    apexName: String,
     fortniteName: String,
     password: String
 });

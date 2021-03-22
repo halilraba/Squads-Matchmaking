@@ -13,7 +13,7 @@ exports.createPlayerPreferences = (req, res) => {
         competitions: req.body.competitions,
         exhibitions: req.body.exhibitions,
         funScale: req.body.funScale,
-        riskScale:req.body.riskScale
+        riskScale: req.body.riskScale
     });
     
     playerPreferences
