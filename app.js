@@ -126,7 +126,7 @@ app.post("/signup", (req, res) => {
                         req.session.save();
 
                         // Create user game stat document if username entered
-                        if (fortniteData || apexData) {
+                        if (req.body.fortniteName || req.body.apexName) {
                             crud.createNewStatDocument(req.body.email, req.body.apexName, apexData, req.body.fortniteName, fortniteData);
                         }
 
