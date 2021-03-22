@@ -12,7 +12,6 @@ exports.checkUserAccounts = async function (apexName, fortniteName, squadsName, 
     var apexData = true;
     if (apexName) {
         apexData = await getApexLegendsData(apexName);
-        // console.log(apexData);
     } 
 
     // Check if Fortnite user exists by getting Fortnite Game Data 
@@ -88,9 +87,6 @@ async function getApexLegendsData(apexName) {
             let apexPath = '/' + accountType[i] + '/' + apexName;
             let apexKey = '?TRN-Api-Key=' + process.env.API_KEY;
             let apexURL = apexHost + apexPath + apexKey;
-
-            // console.log("i = " + i)
-            // console.log(apexURL);
                 
             https.get(apexURL, (response) => {
 
@@ -103,8 +99,6 @@ async function getApexLegendsData(apexName) {
 
                     response.on('end', () => {                       
                         let apexParse = JSON.parse(result);
-
-                        // console.log(apexParse);
 
                         apexData.apexName = apexName;
                         apexData.level = apexParse.data.segments[0].stats.level.value;

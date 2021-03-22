@@ -10,7 +10,8 @@ describe("API Calls", function() {
       this.timeout(5000);
       this.slow(4000);
       let squadsName = "frodo9";
-      let fortniteName = "fool-of-a-Took";
+      let fortniteName = "";
+      let apexName = "";
 
       let promise = new Promise((resolve, reject) => {
         apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
@@ -26,7 +27,8 @@ describe("API Calls", function() {
       this.timeout(5000);
       this.slow(4000);
       let squadsName = "gandalf";
-      let fortniteName = "fool-of-a-Took";
+      let fortniteName = "";
+      let apexName = "";
 
       let promise = new Promise((resolve, reject) => {
         apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
@@ -43,6 +45,7 @@ describe("API Calls", function() {
       this.slow(4000);
       let squadsName = "gandalf";
       let fortniteName = "fool-of-a-Took";
+      let apexName = "";
 
       let promise = new Promise((resolve, reject) => {
         apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
@@ -55,10 +58,11 @@ describe("API Calls", function() {
     });
 
     it("should not return Fortnite API data if Fortnite user does not exist", async function() { 
-      this.timeout(5000);
-      this.slow(4000);
+      this.timeout(10000);
+      this.slow(8000);
       let squadsName = "gandalf";
-      let fortniteName = "xxx";
+      let fortniteName = "syaucsudcbiu";
+      let apexName = "";
 
       let promise = new Promise((resolve, reject) => {
         apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
@@ -74,12 +78,29 @@ describe("API Calls", function() {
       this.timeout(5000);
       this.slow(4000);
       let squadsName = "gandalf";
-      let fortniteName = "xxx";
+      let fortniteName = "";
       let apexName = "Daltoosh";
 
       let promise = new Promise((resolve, reject) => {
         apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
           expect(apexData).to.not.be.null;
+          resolve();
+        });
+      });
+
+      await promise;
+    });
+
+    it("should not return Apex API data if Apex user does not exist", async function() { 
+      this.timeout(10000);
+      this.slow(8000);
+      let squadsName = "gandalf";
+      let fortniteName = "";
+      let apexName = "aysouagchsb";
+
+      let promise = new Promise((resolve, reject) => {
+        apiCalls.checkUserAccounts(apexName, fortniteName, squadsName, (apexData, fortniteData, squadsUser)=> {
+          expect(apexData).to.be.null;
           resolve();
         });
       });

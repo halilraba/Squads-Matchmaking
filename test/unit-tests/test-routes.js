@@ -186,7 +186,7 @@ describe("GET routes", function() {
     });
   });
 
-  it("should redirect to /preferences to /signin when user not logged in", function(done) {
+  it("should redirect /preferences to /signin when user not logged in", function(done) {
     request(app) 
     .get("/preferences")
     .expect('Location', '/signin')

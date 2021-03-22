@@ -19,28 +19,49 @@ exports.checkSquadsUsernameExists = async function (squadsName) {
     return result;
 }
 
-exports.createNewStatDocument = function (email, fortniteName, fortniteData) {
+exports.createNewStatDocument = function (email, apexName, apexData, fortniteName, fortniteData) {
+
+    const emailKey = email;
+    var scorePerMatch;
+    var kd;
+    var winRate;
+    var level;
+    var kills;
+    var damage;
 
     if (fortniteData) {
-        const scorePerMatch = fortniteData.scorePerMatch;
-        const kd = fortniteData.kd;
-        const winRate = fortniteData.winRate;
-        const emailKey = email;
-        
-        const newStatDoc = new GameStat({
-            email: emailKey,
-            fortniteName: fortniteName,
-            fortniteScorePerMatch: scorePerMatch,
-            fortniteKD: kd,
-            fortniteWinRate: winRate
-        });
-
-        newStatDoc.save(function (err, doc) {
-            if (err) {
-                console.log(err);
-            }
-        });
+        scorePerMatch = fortniteData.scorePerMatch;
+        kd = fortniteData.kd;
+        winRate = fortniteData.winRate;
     }
+
+    if (apexData) {
+        level = apexData.level;
+        if (apexData.kills) {
+            kills = apexData.kills;
+        }
+        if (apexData.damage) {
+            damage = apexData.damage;
+        }
+    }
+
+    const newStatDoc = new GameStat({
+        email: emailKey,
+        fortniteName: fortniteName,
+        fortniteScorePerMatch: scorePerMatch,
+        fortniteKD: kd,
+        fortniteWinRate: winRate,
+        apexName: apexName,
+        apexLevel: level,
+        apexKills: kills,   
+        apexDamage: damage
+    });
+
+    newStatDoc.save(function (err, doc) {
+        if (err) {
+            console.log(err);
+        }
+    });
 }
 
 // const query = User.where({$or:[{squadsName: squadsName},{codName: codName},{fortniteName: fortniteName}]});

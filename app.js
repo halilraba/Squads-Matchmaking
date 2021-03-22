@@ -103,7 +103,7 @@ app.post("/signup", (req, res) => {
 
     apiCalls.checkUserAccounts(req.body.apexName, req.body.fortniteName, req.body.squadsName, (apexData, fortniteData, squadsUser)=> {
 
-        if (!fortniteData || squadsUser) {
+        if (!apexData || !fortniteData || squadsUser) {
             res.redirect("/signup");
         } else {
 
@@ -122,9 +122,12 @@ app.post("/signup", (req, res) => {
                     res.redirect("/signup");
                 } else {
                     passport.authenticate("local")(req, res, function() {
+                        req.session.email = req.body.email;
+                        req.session.save();
+
                         // Create user game stat document if username entered
-                        if (req.body.fortniteName) {
-                            crud.createNewStatDocument(req.body.email, req.body.fortniteName, fortniteData);
+                        if (fortniteData || apexData) {
+                            crud.createNewStatDocument(req.body.email, req.body.apexName, apexData, req.body.fortniteName, fortniteData);
                         }
 
                         res.redirect("/preferences");
@@ -139,15 +142,13 @@ app.post("/signup", (req, res) => {
 app.use('/preferences', playerPreferencesRoutes);
 
 app.get('/preferences', (req, res) => {
-    res.sendFile(__dirname + "/views/preferences-form.html");
+    if (req.isAuthenticated()){
+        res.sendFile(__dirname + "/views/preferences-form.html");
+    } else {
+        res.redirect("/signin");
+    }
+    
 });
-
-
-// app.use((req, res, next) => {
-//     const error = new Error('Not found');
-//     error.status = 404;
-//     next(error);
-// });
 
 
 module.exports = app;
