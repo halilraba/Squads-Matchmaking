@@ -4,16 +4,22 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
+
 const passportLocalMongoose = require("passport-local-mongoose");
+
 
 const User = require(__dirname + "/models/user-model.js");
 const apiCalls = require(__dirname + "/api-calls.js");
 const crud = require(__dirname + "/crud.js");
 
+const playerPreferencesRoutes = require(__dirname + '/routes/playerPreferences.route.js');
+
 const app = express();
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended: true}));
+//body parser
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 const secret = process.env.SECRET;
 
@@ -44,10 +50,18 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", (req, res) => {
     
     if (req.isAuthenticated()){
-        res.sendFile(__dirname + "/views/user-profile.html");
+        res.redirect("/profile");
     } else {
-        // res.redirect("/signin");
-        res.sendFile(__dirname + "/views/index.html")
+        res.redirect("/index");
+    }
+});
+
+app.get("/profile", (req, res) => {
+
+    if (req.isAuthenticated()){
+        res.sendFile(__dirname + "/views/user-profile.html")
+    } else {
+        res.redirect("/signin");
     }
 });
 
@@ -60,7 +74,7 @@ app.get("/signin", (req, res) => {
 });
 
 app.post("/signin", (req, res) => {
-    
+
     const user = new User({
         email: req.body.email,
         password: req.body.password
@@ -74,6 +88,8 @@ app.post("/signin", (req, res) => {
                 successfulRedirect: "/",
                 failureRedirect: "/signin"})(req, res, function() {
                 res.redirect("/");
+                req.session.email = req.body.email;
+                req.session.save();
             });
         }
     });
@@ -108,11 +124,10 @@ app.post("/signup", (req, res) => {
                     passport.authenticate("local")(req, res, function() {
                         // Create user game stat document if username entered
                         if (req.body.fortniteName) {
-                            console.log("Executing crud function");
                             crud.createNewStatDocument(req.body.squadsName, fortniteData);
                         }
 
-                        res.redirect("/");
+                        res.redirect("/preferences");
                     });
                 }
             });
@@ -121,14 +136,18 @@ app.post("/signup", (req, res) => {
 });
 
 
+app.use('/preferences', playerPreferencesRoutes);
 
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 3000;
-}
-app.listen(port, () => {
-    console.log("Server has started successfully.")
+app.get('/preferences', (req, res) => {
+    res.sendFile(__dirname + "/views/preferences-form.html");
 });
+
+
+// app.use((req, res, next) => {
+//     const error = new Error('Not found');
+//     error.status = 404;
+//     next(error);
+// });
+
 
 module.exports = app;
