@@ -84,6 +84,14 @@ after(function(){
       console.log("Test user deleted from gamestats.");
     }
   }); 
+
+  Preference.deleteOne({email: 'frodo@bagend.com'}, function (err, result) { 
+    if (err){ 
+      console.log(err) 
+    } else {
+      console.log("Test user deleted from preferences.");
+    }
+  }); 
 });
 
 describe("GET routes", function() {
