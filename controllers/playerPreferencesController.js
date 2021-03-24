@@ -48,8 +48,8 @@ exports.createPlayerPreferences = (req, res) => {
 
 exports.getPlayersPreferences = (res, req) => {
     
-    Preference.find()
-    .select(' numberOfPlayers rankingMode playMode competitionMode riskMode _id')
+    playerPreferences.find()
+    //.select(' numberOfPlayers rankingMode playMode competitionMode riskMode _id')
     .exec()
     .then( docs => {
         const response = {
@@ -80,28 +80,30 @@ exports.getPlayersPreferences = (res, req) => {
     });
 }
 
-exports.getPreferenceById =  (req, res, next) => {
-    const id = req.params.preferenceId;
-    Preference.findOne(id)
-    .select('numberOfPlayers rankingMode playMode competitionMode riskMode _id')
-    .exec()
-    .then(doc => {
-        console.log('From database' + doc);
-        if (doc){
-            res.status(200).json({
-                preference: doc,
-                request:{
-                    type:'GET',
-                   // url: 'http://localhost/preferences/getPreferenceById' 
-                }
-            });
-        }
-        else{
-            res.status(404).json({message: 'No valid entry found for provided ID'});
-        }
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({error: err});
-    });
+exports.getPreferenceByEmail =  (req, res, next) => {
+    const email = req.session.email;
+    //const email = req.body.email;
+    Preference.findOne(email)
+        // .select('email, duos, trios, squads, casual, ranked, competitions, exhibitions, funScale, riskScale email')
+        .exec()
+        .then(doc => {
+
+            console.log('From database' + doc);
+            if (doc){
+                res.status(200).json({
+                    preference: doc,
+                    request:{
+                        type:'GET',
+                        url: 'http://localhost/preferences/getPreferenceById'
+                    }
+                });
+            }
+            else{
+                res.status(404).json({message: 'No valid entry found for provided ID'});
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error: err});
+        });
 }

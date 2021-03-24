@@ -13,6 +13,6 @@ router.get('/getAllPreferences', playerPreferencesController.getPlayersPreferenc
  */
  router.post('/', playerPreferencesController.createPlayerPreferences);
 
- router.get('/: preferenceId', playerPreferencesController.getPreferenceById);
+ router.get('/:email', playerPreferencesController.getPreferenceByEmail);
 
  module.exports = router;
