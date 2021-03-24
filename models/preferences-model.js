@@ -1,16 +1,20 @@
 const mongoose = require('mongoose');
 
-const preferenceSchema = mongoose.Schema({
+const preferenceSchema = new mongoose.Schema({
 
-    _id: mongoose.Schema.Types.ObjectId,
-    numberOfPlayers:{type: [String] , required:[true,'required']},
-    rankingMode:{type: [String], required: [true,'required']},
-    playMode:{type: [String], required: [true, 'required' ]},
-    competitionMode: {type: [String], required:[ true, 'competion mode required']},
-    riskMode:{ type: [String], required: [true,'required']}
+    email: String,
+    duos: String,
+    trios: String,
+    squads: String,
+    casual: String,
+    ranked: String,
+    competitions: String,
+    exhibitions: String,
+    funScale: Number,
+    riskScale: Number
 });
 
-module.exports = mongoose.model('PlayerPreferences',preferenceSchema);
+// module.exports = mongoose.model('PlayerPreferences',preferenceSchema);
 
 // const mongoose = require("mongoose");
 
@@ -19,9 +23,9 @@ module.exports = mongoose.model('PlayerPreferences',preferenceSchema);
 //     preference1: Number
 // };
 
-// const Preference = new mongoose.model("Preference", preferenceSchema);
+const Preference = new mongoose.model("Preference", preferenceSchema);
 
-// module.exports = Preference;
+module.exports = Preference;
 
 
    

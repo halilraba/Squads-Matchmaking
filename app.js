@@ -59,14 +59,17 @@ app.get("/", (req, res) => {
 app.get("/profile", (req, res) => {
 
     if (req.isAuthenticated()){
-        res.sendFile(__dirname + "/views/user-profile.html")
+        let email = req.session.email;
+        crud.findGameStats(email, (gameStats)=> {
+            res.sendFile(__dirname + "/views/user-profile.html");
+        });
     } else {
         res.redirect("/signin");
     }
 });
 
 app.get("/index", (req, res) => {
-    res.sendFile(__dirname + "/views/index.html")
+    res.sendFile(__dirname + "/views/index.html");
 });
 
 app.get("/signin", (req, res) => {
@@ -101,9 +104,9 @@ app.get("/signup", (req, res) => {
 
 app.post("/signup", (req, res) => {
 
-    apiCalls.checkUserAccounts(req.body.fortniteName, req.body.squadsName, (fortniteData, squadsUser)=> {
+    apiCalls.checkUserAccounts(req.body.apexName, req.body.fortniteName, req.body.squadsName, (apexData, fortniteData, squadsUser)=> {
 
-        if (!fortniteData || squadsUser) {
+        if (!apexData || !fortniteData || squadsUser) {
             res.redirect("/signup");
         } else {
 
@@ -114,7 +117,7 @@ app.post("/signup", (req, res) => {
                 lastName: req.body.lname,
                 birthDate: req.body.bdate,
                 squadsName: req.body.squadsName,
-                codName: req.body.codName,
+                apexName: req.body.apexName,
                 fortniteName: req.body.fortniteName
             }, req.body.password, function(err, user) {
                 if (err) {
@@ -122,9 +125,12 @@ app.post("/signup", (req, res) => {
                     res.redirect("/signup");
                 } else {
                     passport.authenticate("local")(req, res, function() {
+                        req.session.email = req.body.email;
+                        req.session.save();
+
                         // Create user game stat document if username entered
-                        if (req.body.fortniteName) {
-                            crud.createNewStatDocument(req.body.squadsName, fortniteData);
+                        if (req.body.fortniteName || req.body.apexName) {
+                            crud.createNewStatDocument(req.body.email, req.body.apexName, apexData, req.body.fortniteName, fortniteData);
                         }
 
                         res.redirect("/preferences");
@@ -139,15 +145,13 @@ app.post("/signup", (req, res) => {
 app.use('/preferences', playerPreferencesRoutes);
 
 app.get('/preferences', (req, res) => {
-    res.sendFile(__dirname + "/views/preferences-form.html");
+    if (req.isAuthenticated()){
+        res.sendFile(__dirname + "/views/preferences-form.html");
+    } else {
+        res.redirect("/signin");
+    }
+    
 });
-
-
-// app.use((req, res, next) => {
-//     const error = new Error('Not found');
-//     error.status = 404;
-//     next(error);
-// });
 
 
 module.exports = app;

@@ -19,27 +19,65 @@ exports.checkSquadsUsernameExists = async function (squadsName) {
     return result;
 }
 
-exports.createNewStatDocument = function (squadsName, fortniteData) {
+exports.createNewStatDocument = function (email, apexName, apexData, fortniteName, fortniteData) {
+
+    const emailKey = email;
+    var scorePerMatch;
+    var kd;
+    var winRate;
+    var level;
+    var kills;
+    var damage;
 
     if (fortniteData) {
-        const scorePerMatch = fortniteData.scorePerMatch;
-        const kd = fortniteData.kd;
-        const winRate = fortniteData.winRate;
-        const name = squadsName;
-        
-        const newStatDoc = new GameStat({
-            email: name,
-            fortniteScorePerMatch: scorePerMatch,
-            fortniteKD: kd,
-            fortniteWinRate: winRate
-        });
+        scorePerMatch = fortniteData.scorePerMatch;
+        kd = fortniteData.kd;
+        winRate = fortniteData.winRate;
+    }
 
-        newStatDoc.save(function (err, doc) {
-            if (err) {
+    if (apexData) {
+        level = apexData.level;
+        if (apexData.kills) {
+            kills = apexData.kills;
+        }
+        if (apexData.damage) {
+            damage = apexData.damage;
+        }
+    }
+
+    const newStatDoc = new GameStat({
+        email: emailKey,
+        fortniteName: fortniteName,
+        fortniteScorePerMatch: scorePerMatch,
+        fortniteKD: kd,
+        fortniteWinRate: winRate,
+        apexName: apexName,
+        apexLevel: level,
+        apexKills: kills,   
+        apexDamage: damage
+    });
+
+    newStatDoc.save(function (err, doc) {
+        if (err) {
+            console.log(err);
+        }
+    });
+}
+
+exports.findGameStats = async function(email, fn) {
+    let promise = new Promise((resolve, reject) => {
+
+        const query = GameStat.where({email: email});
+        query.findOne(function(err, gameStats) {
+            if (!err) {
+                resolve(gameStats);
+            } else {
                 console.log(err);
             }
         });
-    }
-}
+    });
 
-// const query = User.where({$or:[{squadsName: squadsName},{codName: codName},{fortniteName: fortniteName}]});
+    let result = await promise;
+    
+    fn(result);
+}
