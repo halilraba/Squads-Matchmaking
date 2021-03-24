@@ -59,14 +59,17 @@ app.get("/", (req, res) => {
 app.get("/profile", (req, res) => {
 
     if (req.isAuthenticated()){
-        res.sendFile(__dirname + "/views/user-profile.html")
+        let email = req.session.email;
+        crud.findGameStats(email, (gameStats)=> {
+            res.sendFile(__dirname + "/views/user-profile.html");
+        });
     } else {
         res.redirect("/signin");
     }
 });
 
 app.get("/index", (req, res) => {
-    res.sendFile(__dirname + "/views/index.html")
+    res.sendFile(__dirname + "/views/index.html");
 });
 
 app.get("/signin", (req, res) => {

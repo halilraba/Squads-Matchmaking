@@ -64,4 +64,20 @@ exports.createNewStatDocument = function (email, apexName, apexData, fortniteNam
     });
 }
 
-// const query = User.where({$or:[{squadsName: squadsName},{codName: codName},{fortniteName: fortniteName}]});
+exports.findGameStats = async function(email, fn) {
+    let promise = new Promise((resolve, reject) => {
+
+        const query = GameStat.where({email: email});
+        query.findOne(function(err, gameStats) {
+            if (!err) {
+                resolve(gameStats);
+            } else {
+                console.log(err);
+            }
+        });
+    });
+
+    let result = await promise;
+    
+    fn(result);
+}
