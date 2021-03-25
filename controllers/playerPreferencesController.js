@@ -81,7 +81,7 @@ exports.getPlayersPreferences = (res, req) => {
 }
 
 exports.getPreferenceByEmail =  (req, res, next) => {
-    const email = req.session.email;
+    const email = req.session.email; 
     //const email = req.body.email;
     Preference.findOne(email)
         // .select('email, duos, trios, squads, casual, ranked, competitions, exhibitions, funScale, riskScale email')

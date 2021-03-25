@@ -1,6 +1,7 @@
 
 const User = require(__dirname + "/models/user-model.js");
 const GameStat = require(__dirname + "/models/gamestat-model.js");
+const preference = require(__dirname + "/controllers/playerPreferencesController.js");
 
 exports.checkSquadsUsernameExists = async function (squadsName) {
     let promise = new Promise((resolve, reject) => {
@@ -64,7 +65,23 @@ exports.createNewStatDocument = function (email, apexName, apexData, fortniteNam
     });
 }
 
-exports.findGameStats = async function(email, fn) {
+exports.findProfileData = async function(email, fn) {
+    let gameStats = await findGameStats(email);
+
+    let preferences = {};
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // DICKSON, I could not get the call to your function below to return data.
+    // It is getting an error. 
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    // let preferences = preference.getPreferenceByEmail();
+    // console.log(preferences);
+
+    fn(gameStats, preferences);
+}
+
+async function findGameStats(email) {
     let promise = new Promise((resolve, reject) => {
 
         const query = GameStat.where({email: email});
@@ -79,5 +96,10 @@ exports.findGameStats = async function(email, fn) {
 
     let result = await promise;
     
-    fn(result);
+    if (result) {
+        return result;
+    } else {
+        return {};
+    }
+    
 }

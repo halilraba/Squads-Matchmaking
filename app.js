@@ -16,6 +16,8 @@ const playerPreferencesRoutes = require(__dirname + '/routes/playerPreferences.r
 
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.use(express.static("public"));
 //body parser
 app.use(bodyParser.urlencoded({extended: false}));
@@ -60,8 +62,27 @@ app.get("/profile", (req, res) => {
 
     if (req.isAuthenticated()){
         let email = req.session.email;
-        crud.findGameStats(email, (gameStats)=> {
-            res.sendFile(__dirname + "/views/user-profile.html");
+        crud.findProfileData(email, (gameStats, preferences)=> {
+            // res.sendFile(__dirname + "/views/user-profile.html");
+            res.render("user-profile-stats", {
+                fortniteName: gameStats.fortniteName,
+                scorePerMatch: gameStats.fortniteScorePerMatch,
+                winRate: gameStats.fortniteWinRate, 
+                killRatio: gameStats.fortniteKD, 
+                apexName: gameStats.apexName,
+                level: gameStats.apexLevel, 
+                kills: gameStats.apexKills, 
+                damage: gameStats.apexDamage, 
+                duos: preferences.duos, 
+                trios: preferences.trios, 
+                squads: preferences.squads, 
+                casual: preferences.casual, 
+                ranked: preferences.ranked, 
+                competitions: preferences.competitions, 
+                exhibitions: preferences.exhibitions, 
+                fcScale: preferences.funScale,  
+                rcScale: preferences.riskScale});
+
         });
     } else {
         res.redirect("/signin");
