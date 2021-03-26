@@ -36,6 +36,7 @@ Going into Sprint Planning, the team had a total of 43 story points in our Produ
 ## [Sprint Review & Retrospective Meeting](https://web.microsoftstream.com/video/38560f2d-4848-40bb-a69a-4d55fc02d057)
 
 ## [Working Prototype: Squads Matchmaking](https://squads-matchmaking.herokuapp.com/index)
+### NOTE: If registering for new account, leave Fortnite name and Apex Legends name blank unless you have a real gamer tag for those platforms.
 ### Increment includes:
 * Landing page
 * New Account registration
