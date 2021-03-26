@@ -17,7 +17,8 @@ Going into Sprint Planning, the team had a total of 43 story points in our Produ
 
 ## [Sprint Backlog and Kanban Board](https://trello.com/b/qfcXvM8Z)
 
-## Burndown Chart (by # of tasks to complete our 14 story points)
+## Burndown Chart 
+(by # of tasks to complete our 14 story points)
 ![Sprint 1 Burndown Chart](https://github.com/dev-brad/Squads-Matchmaking/blob/bd46a4768584e852ef65f4d1da7d168c4695e3ec/readme-images/Sprint%201%20Burndown%20Chart.PNG)
 
 ## [Daily Scrum Notes](https://kennesawedu-my.sharepoint.com/:w:/g/personal/bgriff77_students_kennesaw_edu/EU4EYBiYQCNKs415EpWHmb8ByJ5Syioy62i3dDnV53Bokw?e=lUloeO)
