@@ -1,4 +1,3 @@
-
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -9,10 +8,11 @@
         <title>Preferences Form</title>
     </head>
     <body>
+
       <div class="container">
         <h1>Preferences</h1>
         <form action="/preferences" method="post">
-  
+
           <b style="font-size: 20px">Number of players:</b>
           <br>
           <label for="duos">Duos</label>
@@ -24,7 +24,7 @@
           <label for="squads">Squads</label>
           <input type="checkbox" name="squads" value="Y">
           <br>
-  
+
           <b style="font-size: 20px">Do you prefer Causual modes, Ranked modes, or both?</b>
           <br>
           <label for="casual">Casual</label>
@@ -33,10 +33,7 @@
           <label for="ranked">Ranked</label>
           <input type="checkbox" name="ranked" value="Y">
           <br>
-          <!-- <label for="both">Both</label>
-          <input type="checkbox" name="allModes">
-          <br> -->
-  
+
           <b style="font-size: 20px">Do you prefer competitions, exhibitions, or both?</b>
           <br>
           <label for="competitions">Competitions</label>
@@ -45,26 +42,23 @@
           <label for="exhibitions">Exhibitions</label>
           <input type="checkbox" name="exhibitions" value="Y">
           <br>
-          <!-- <label for="both">Both</label>
-          <input type="checkbox" name="both">
-          <br> -->
-  
+
           <b style="font-size: 20px">Do you prefer to have more fun or be more competitive?</b>
           <p>(Left represents fun and right represents competitive)</p>
           <br>
           <input type="range" min="1" max="100" value="50" class="slider" name="funScale">
           <br>
-  
+
           <b style="font-size: 20px">Do you identify yourself as a risk taker or more conservative?</b>
           <p>(Left represents risk taker and right represents conservative)</p>
           <br>
           <input type="range" min="1" max="100" value="50" class="slider" name="riskScale">
           <br>
-  
+
           <button type="submit">Submit</button>
         </form>
       </div>
-  
+
       <div class="container" style="background-color:#f1f1f1">
         <form action="/" method="GET">
           <div class="container" style="background-color:#f1f1f1">
