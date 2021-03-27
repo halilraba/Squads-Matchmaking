@@ -14,8 +14,8 @@ describe("Database Queries", function() {
 
         let email = 'frodo@bagend.com';
 
-        await crud.findGameStats(email, (gamestatsDoc)=> {
-            expect(gamestatsDoc).to.not.be.null;
+        await crud.findProfileData(email, (squadsName, gameStats, preferences)=> {
+            expect(gameStats).to.not.be.null;
         });
     });
 });

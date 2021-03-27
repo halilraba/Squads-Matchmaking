@@ -66,6 +66,8 @@ exports.createNewStatDocument = function (email, apexName, apexData, fortniteNam
 }
 
 exports.findProfileData = async function(email, fn) {
+    
+    let squadsName = await findUserName(email);
     let gameStats = await findGameStats(email);
 
     let preferences = {};
@@ -78,7 +80,7 @@ exports.findProfileData = async function(email, fn) {
     // let preferences = preference.getPreferenceByEmail();
     // console.log(preferences);
 
-    fn(gameStats, preferences);
+    fn(squadsName, gameStats, preferences);
 }
 
 async function findGameStats(email) {
@@ -98,6 +100,29 @@ async function findGameStats(email) {
     
     if (result) {
         return result;
+    } else {
+        return {};
+    }
+    
+}
+
+async function findUserName(email) {
+    let promise = new Promise((resolve, reject) => {
+
+        const query = User.where({email: email});
+        query.findOne(function(err, user) {
+            if (!err) {
+                resolve(user);
+            } else {
+                console.log(err);
+            }
+        });
+    });
+
+    let result = await promise;
+    
+    if (result) {
+        return result.squadsName;
     } else {
         return {};
     }
