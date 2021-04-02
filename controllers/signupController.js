@@ -10,7 +10,16 @@ exports.register_new_user = function(req, res) {
     apiCalls.checkUserAccounts(req.body.apexName, req.body.fortniteName, req.body.squadsName, (apexData, fortniteData, squadsUser)=> {
 
         if (!apexData || !fortniteData || squadsUser) {
+            let errMessages = getErrorMessage(squadsUser, apexData, fortniteData);
+            console.log("squadsErr = " + errMessages[0]);
+            console.log("apexErr = " + errMessages[1]);
+            console.log("fortniteErr = " + errMessages[2]);
             res.redirect("/signup");
+            // res.render("new-registration-form", {
+            //     squadsErr: errMessages[0],
+            //     apexErr: errMessages[1],
+            //     fortniteErr: errMessages[2],
+            //     emailErr: ""});
         } else {
 
             // Create and authenticate user 
@@ -26,6 +35,11 @@ exports.register_new_user = function(req, res) {
                 if (err) {
                     console.log(err);
                     res.redirect("/signup");
+                    // res.render("new-registration-form", {
+                    //     squadsErr: "",
+                    //     apexErr: "",
+                    //     fortniteErr: "",
+                    //     emailErr: "A Squads account already exists for this email address."});
                 } else {
                     passport.authenticate("local")(req, res, function() {
                         req.session.email = req.body.email;
@@ -43,3 +57,24 @@ exports.register_new_user = function(req, res) {
         }
     });
 };
+
+function getErrorMessage(squadsUser, apexData, fortniteData) {
+
+    let squadsErr = "";
+    let apexErr = "";
+    let fortniteErr = "";
+
+    if (squadsUser) {
+        squadsErr = "This Squads username is already taken. Please choose another."
+    }
+    
+    if (!apexData) {
+        apexErr = "The Apex Legends username provided does not exist."
+    }
+
+    if (!fortniteData) {
+        fortniteErr = "The Fortnite username provided does not exist."
+    }
+
+    return [squadsErr, apexErr, fortniteErr];
+}
