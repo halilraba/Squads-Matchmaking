@@ -14,12 +14,12 @@ exports.register_new_user = function(req, res) {
             console.log("squadsErr = " + errMessages[0]);
             console.log("apexErr = " + errMessages[1]);
             console.log("fortniteErr = " + errMessages[2]);
-            res.redirect("/signup");
-            // res.render("new-registration-form", {
-            //     squadsErr: errMessages[0],
-            //     apexErr: errMessages[1],
-            //     fortniteErr: errMessages[2],
-            //     emailErr: ""});
+            // res.redirect("/signup");
+            res.render("new-registration-form", {
+                squadsErr: errMessages[0],
+                apexErr: errMessages[1],
+                fortniteErr: errMessages[2],
+                emailErr: ""});
         } else {
 
             // Create and authenticate user 
@@ -34,12 +34,12 @@ exports.register_new_user = function(req, res) {
             }, req.body.password, function(err, user) {
                 if (err) {
                     console.log(err);
-                    res.redirect("/signup");
-                    // res.render("new-registration-form", {
-                    //     squadsErr: "",
-                    //     apexErr: "",
-                    //     fortniteErr: "",
-                    //     emailErr: "A Squads account already exists for this email address."});
+                    // res.redirect("/signup");
+                    res.render("new-registration-form", {
+                        squadsErr: "",
+                        apexErr: "",
+                        fortniteErr: "",
+                        emailErr: "A Squads account already exists for this email address."});
                 } else {
                     passport.authenticate("local")(req, res, function() {
                         req.session.email = req.body.email;
