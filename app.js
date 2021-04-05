@@ -13,6 +13,7 @@ const profileRoutes = require(__dirname + '/routes/profile.route.js');
 const signinRoutes = require(__dirname + '/routes/signin.route.js');
 const signupRoutes = require(__dirname + '/routes/signup.route.js');
 const playerPreferencesRoutes = require(__dirname + '/routes/playerPreferences.route.js');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 
 const uri = process.env.DB_URI;
 
@@ -57,8 +59,12 @@ app.use('/index', indexRoutes);
 app.use('/profile', profileRoutes);
 
 app.use('/signin', signinRoutes);
-
 app.use('/signup', signupRoutes);
+
+app.delete('/signout', (req, res)=> {
+    req.logout()
+    req.redirect('/signin')
+})
 
 app.use('/preferences', playerPreferencesRoutes);
 
