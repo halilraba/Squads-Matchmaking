@@ -11,10 +11,7 @@ exports.register_new_user = function(req, res) {
 
         if (!apexData || !fortniteData || squadsUser) {
             let errMessages = getErrorMessage(squadsUser, apexData, fortniteData);
-            console.log("squadsErr = " + errMessages[0]);
-            console.log("apexErr = " + errMessages[1]);
-            console.log("fortniteErr = " + errMessages[2]);
-            // res.redirect("/signup");
+
             res.render("new-registration-form", {
                 squadsErr: errMessages[0],
                 apexErr: errMessages[1],
@@ -33,8 +30,6 @@ exports.register_new_user = function(req, res) {
                 fortniteName: req.body.fortniteName
             }, req.body.password, function(err, user) {
                 if (err) {
-                    console.log(err);
-                    // res.redirect("/signup");
                     res.render("new-registration-form", {
                         squadsErr: "",
                         apexErr: "",
