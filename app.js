@@ -12,6 +12,7 @@ const indexRoutes = require(__dirname + '/routes/index.route.js');
 const profileRoutes = require(__dirname + '/routes/profile.route.js');
 const signinRoutes = require(__dirname + '/routes/signin.route.js');
 const signupRoutes = require(__dirname + '/routes/signup.route.js');
+const matchRoutes = require(__dirname + '/routes/match.route.js');
 const playerPreferencesRoutes = require(__dirname + '/routes/playerPreferences.route.js');
 const methodOverride = require('method-override');
 
@@ -76,6 +77,8 @@ app.get('/preferences', (req, res) => {
     }
     
 });
+
+app.use('/match', matchRoutes);
 
 
 module.exports = app;
