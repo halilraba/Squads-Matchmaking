@@ -5,6 +5,10 @@ exports.get_user_profile = function(req, res) {
     if (req.isAuthenticated()){
         let email = req.session.email;
         crud.findProfileData(email, (squadsName, gameStats, preferences)=> {
+
+            req.session.gameStats = gameStats;
+            req.session.preferences = preferences;
+            req.session.save();
             
             res.render("user-profile-stats", {
                 squadsName: squadsName,
@@ -25,8 +29,8 @@ exports.get_user_profile = function(req, res) {
                 exhibitions: preferences.exhibitions, 
                 fcScale: preferences.funScale,  
                 rcScale: preferences.riskScale});
-
         });
+
     } else {
         res.redirect("/signin");
     }

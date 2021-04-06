@@ -30,16 +30,34 @@
                         <div class="mt-3">
                           <h4>@<%= squadsName %></h4>
                         </div>
+
+                        <% if (fortniteName) { %> 
                         <div class="mt-3">
                           <form action="/match/fortnite" method="get">
                             <button class="btn btn-primary">Find Fortnite Teammates</button>
                           </form>
                         </div>
+                        <% } else { %> 
+                        <div class="mt-3">
+                          <form action="/profile" method="get">
+                            <button class="btn btn-primary">Link Fortnite Account</button>
+                          </form>
+                        </div>
+                        <% } %> 
+
+                        <% if (apexName) { %> 
                         <div class="mt-3">
                           <form action="/match/apex-legends" method="get">
                             <button class="btn btn-primary">Find Apex Legends Teammates</button>
                           </form>
                         </div>
+                        <% } else { %> 
+                        <div class="mt-3">
+                          <form action="/profile" method="get">
+                            <button class="btn btn-primary">Link Apex Legends Account</button>
+                          </form>
+                        </div>
+                        <% } %> 
                       </div>
                     </div>
                   </div>
@@ -80,8 +98,8 @@
                       <p>Ranked: <%= ranked %></p>
                       <p>Competitions: <%= competitions %></p>
                       <p>Exhibitions: <%= exhibitions %></p>
-                      <p>Fun/Competitive Scale: <%= fcScale %></p>
-                      <p>Risk/Conservative Scale: <%= rcScale %></p>
+                      <p>Fun-Competitive Scale (0-100): <%= fcScale %></p>
+                      <p>Risk-Conservative Scale (0-100): <%= rcScale %></p>
                     </div>
                   </div>
                     <div class="col-sm-9 text-secondary">

@@ -1,7 +1,8 @@
 
 const User = require(__dirname + "/models/user-model.js");
 const GameStat = require(__dirname + "/models/gamestat-model.js");
-const preference = require(__dirname + "/controllers/playerPreferencesController.js");
+const Preference = require(__dirname + "/models/preferences-model.js");
+// const preference = require(__dirname + "/controllers/playerPreferencesController.js");
 
 exports.checkSquadsUsernameExists = async function (squadsName) {
     let promise = new Promise((resolve, reject) => {
@@ -69,18 +70,34 @@ exports.findProfileData = async function(email, fn) {
     
     let squadsName = await findUserName(email);
     let gameStats = await findGameStats(email);
-
-    let preferences = {};
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // DICKSON, I could not get the call to your function below to return data.
-    // It is getting an error. 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    let preferences = await findPreferences(email);
 
     // let preferences = preference.getPreferenceByEmail();
-    // console.log(preferences);
 
     fn(squadsName, gameStats, preferences);
+}
+
+async function findPreferences(email) {
+    let promise = new Promise((resolve, reject) => {
+
+        const query = Preference.where({email: email});
+        query.findOne(function(err, preferences) {
+            if (!err) {
+                resolve(preferences);
+            } else {
+                console.log(err);
+            }
+        });
+    });
+
+    let result = await promise;
+    
+    if (result) {
+        return result;
+    } else {
+        return {};
+    }
+    
 }
 
 async function findGameStats(email) {
