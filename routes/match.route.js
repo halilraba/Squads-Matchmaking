@@ -54,19 +54,15 @@ const gameMatches = [
     duos: "Y", trios: "Y", squads: "Y", casual: "Y", ranked: "Y", competitions: "", exhibitions: "Y", funScale: 30, riskScale: 30},
 ];
 
-// !!!!!!!!!!!!!!
-// The array below is for testing only -- it should be removed when match queries are working 
-// !!!!!!!!!!!!!!
-const userStats = {squadsName: "brad123", apexName: "Daltoosh", apexLevel: 6321, apexKills: 5955, apexDamage: 5339,
-                fortniteName: "fool-of-a-Took", fortniteScorePerMatch: 313.316, fortniteKD: 1.739, fortniteWinRate: 12.658,
-                duos: "", trios: "", squads: "Y", casual: "Y", ranked: "", competitions: "", exhibitions: "Y", funScale: 25, riskScale: 75};
-
 
 router.get("/fortnite", async function(req, res) {
 
     if (req.isAuthenticated()){
 
-        matchController.rank_matches(userStats, gameMatches, "Fortnite", (rankedMatches) => {
+        let userStats = req.session.gameStats;
+        let userPreferences = req.session.preferences;
+
+        matchController.rank_matches(userStats, userPreferences, gameMatches, "Fortnite", (rankedMatches) => {
 
         res.render("match-report", {
             game: "Fortnite",
@@ -83,7 +79,10 @@ router.get("/apex-legends", (req, res) => {
     
     if (req.isAuthenticated()){
 
-        matchController.rank_matches(userStats, gameMatches, "Apex Legends", (rankedMatches) => {
+        let userStats = req.session.gameStats;
+        let userPreferences = req.session.preferences;
+
+        matchController.rank_matches(userStats, userPreferences, gameMatches, "Apex Legends", (rankedMatches) => {
 
         res.render("match-report", {
             game: "Apex Legends",

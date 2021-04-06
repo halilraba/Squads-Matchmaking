@@ -4,12 +4,12 @@ const passport = require("passport");
 const crud = require(__dirname + "./../crud.js");
 const apiCalls = require(__dirname + "./../api-calls.js");
 
-exports.rank_matches = async function(userStats, gameMatches, game, fn) {
+exports.rank_matches = async function(userStats, userPreferences, gameMatches, game, fn) {
 
     let promise = new Promise((resolve, reject) => {
         var MatchScores = [];
         for (const match of gameMatches) {
-            let preferenceMatchScore = get_preference_match_score(userStats, match);
+            let preferenceMatchScore = get_preference_match_score(userPreferences, match);
             let gameMatchScore;
 
             switch (game) {

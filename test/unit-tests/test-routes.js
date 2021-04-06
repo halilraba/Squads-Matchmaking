@@ -210,57 +210,111 @@ describe("GET routes", function() {
 });
 
 describe("POST routes", function() {
-//   it("should get /signup when duplicate user email", function(done) {
-//     let dupeEmail = {
-//       email: 'frodo@bagend.com',
-//       fname: 'Bilbo',
-//       lname: 'Baggins',
-//       bdate: '1900-04-01',
-//       squadsName: 'bilbo1',
-//       codName: '',
-//       fortniteName: '',
-//       password: 'trolls'
-//     }
+  it("should get /signup when duplicate user email", function(done) {
+    let dupeEmail = {
+      email: 'frodo@bagend.com',
+      fname: 'Bilbo',
+      lname: 'Baggins',
+      bdate: '1900-04-01',
+      squadsName: 'bilbo1',
+      codName: '',
+      fortniteName: '',
+      password: 'trolls'
+    }
 
-//     newUser
-//     .post('/signup')
-//     .send(dupeEmail)
-//     .expect(302)
-//     .expect('Location', '/signup')
-//     .set('Content-Type', 'application/x-www-form-urlencoded')
-//     .end(function(err, res){
-//       if (err) {
-//         return done(err);
-//       }
-//       return done();
-//     });
-//   });
+    newUser
+    .post('/signup')
+    .send(dupeEmail)
+    .expect(200)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .end(function(err, res){
+      if (err) {
+        return done(err);
+      }
+      return done();
+    });
+  });
   
-//   it("should get /signup when duplicate Squads username", function(done) {
-//     let dupeSquadsName = {
-//       email: 'bilbo@bagend.com',
-//       fname: 'Bilbo',
-//       lname: 'Baggins',
-//       bdate: '1900-04-01',
-//       squadsName: 'frodo9',
-//       codName: '',
-//       fortniteName: '',
-//       password: 'trolls'
-//     }
+  it("should get /signup when duplicate Squads username", function(done) {
+    let dupeSquadsName = {
+      email: 'bilbo@bagend.com',
+      fname: 'Bilbo',
+      lname: 'Baggins',
+      bdate: '1900-04-01',
+      squadsName: 'frodo9',
+      codName: '',
+      fortniteName: '',
+      password: 'trolls'
+    }
 
-//     newUser
-//     .post('/signup')
-//     .send(dupeSquadsName)
-//     .expect(302)
-//     .expect('Location', '/signup')
-//     .set('Content-Type', 'application/x-www-form-urlencoded')
-//     .end(function(err, res){
-//       if (err) {
-//         return done(err);
-//       }
-//       return done();
-//     });
-//   });
+    newUser
+    .post('/signup')
+    .send(dupeSquadsName)
+    .expect(200)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .end(function(err, res){
+      if (err) {
+        return done(err);
+      }
+      return done();
+    });
+  });
+
+  it("should get /signup when bad Fortnite username", function(done) {
+    this.timeout(5000);
+    this.slow(4000);
+
+    let badFortniteName = {
+      email: 'bilbo@bagend.com',
+      fname: 'Bilbo',
+      lname: 'Baggins',
+      bdate: '1900-04-01',
+      squadsName: 'frodo9',
+      apexName: '',
+      fortniteName: 'ayuxkawdcgoawucvgkadjhvja',
+      password: 'trolls'
+    }
+
+    newUser
+    .post('/signup')
+    .send(badFortniteName)
+    .expect(200)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .end(function(err, res){
+      if (err) {
+        return done(err);
+      }
+      return done();
+    });
+  });
+
+  it("should get /signup when bad Apex Legends username", function(done) {
+    this.timeout(5000);
+    this.slow(4000);
+
+    let badApexName = {
+      email: 'bilbo@bagend.com',
+      fname: 'Bilbo',
+      lname: 'Baggins',
+      bdate: '1900-04-01',
+      squadsName: 'frodo9',
+      apexName: 'kxjanxkahsbclahcbls b',
+      fortniteName: '',
+      password: 'trolls'
+    }
+
+    newUser
+    .post('/signup')
+    .send(badApexName)
+    .expect(200)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .end(function(err, res){
+      if (err) {
+        return done(err);
+      }
+      return done();
+    });
+  });
 
   it("should redirect /preferences POST to /profile", function(done) {
     let newPreferences = {
