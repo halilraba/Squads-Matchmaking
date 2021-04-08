@@ -4,12 +4,13 @@ jdk:
   
 script: npm install
 
+
+
 jobs: 
   include:
     - stage: Build
       script: nodemon server.js
-
-jobs: 
+      
   include:
     - stage: Test
       script: mocha ./test/unit-tests
