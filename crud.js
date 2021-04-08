@@ -145,3 +145,29 @@ async function findUserName(email) {
     }
     
 }
+
+async function findPMatch(duos, trios, squads, casual, ranked, competitions, exhibitions) {
+    let promise = new Promise((resolve, reject) => {
+
+        const query = Preference.where({ $or: [{ duos: "Y" }, { trios: "Y" }, { squads: "Y" }], $or: [{ casual: "Y" }, { ranked: "Y" }], $or: [{ competitions: "Y" }, { exhibitions: "Y"}] });
+        query.find(function (err, preferences) {
+            if (!err) {
+                resolve(preferences);
+            } else {
+                console.log(err);
+            }
+        });
+    });
+
+    let result = await promise;
+
+    if (result) {
+        //remove this console  log
+        console.log(results);
+        return result;
+    } else {
+        return {};
+    }
+
+}
+
