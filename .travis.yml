@@ -1,0 +1,15 @@
+language: javascript
+jdk:
+  -openjdk12
+  
+script: npm install
+
+jobs: 
+  include:
+    - stage: Build
+      script: nodemon server.js
+
+jobs: 
+  include:
+    - stage: Test
+      script: protractor conf.js
