@@ -12,4 +12,4 @@ jobs:
 jobs: 
   include:
     - stage: Test
-      script: protractor conf.js
+      script: mocha ./test/unit-tests
