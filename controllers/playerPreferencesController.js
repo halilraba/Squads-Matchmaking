@@ -46,64 +46,112 @@ exports.createPlayerPreferences = (req, res) => {
 }
 
 
-exports.getPlayersPreferences = (res, req) => {
-    
-    playerPreferences.find()
-    //.select(' numberOfPlayers rankingMode playMode competitionMode riskMode _id')
-    .exec()
-    .then( docs => {
-        const response = {
-            count: docs.length,
-            playerPreferences: docs.map(doc => {
-                return{
-                    numberOfPlayers: doc.numberOfPlayers,
-                    rankingMode: doc.rankingMode,
-                    playMode: doc.playMode,
-                    competitionMode: doc.competitionMode,
-                    riskMode: doc.riskMode,
-                    _id: doc._id,
-                    request:{
-                        type:'GET',
-                        url:'http://localhost:3000/get_preferences' + doc._id
-                    }
 
-                }
-            })
-        }
-        console.log(docs);
-            // res.status(200).json(response);
+
+/**
+ * Function to retrieve a user profile by email address
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+ exports.getPreferenceByEmail = (req, res) => {
+    const useremail = req.params.email;
+
+    Preference.find({email:useremail})
+    .then((doc)=>{
+       console.log(doc);
+       //res.send(doc);
+       res.render(__dirname + "/../views/user-profile-stats",{Preference:Preference});
+       
     })
-    .catch(err => {
-        console.log(err);
-    // res.status(500).json({error: err}
-    //     );
-    });
+   .catch((err)=>{
+       console.log(err);
+   });
 }
 
-exports.getPreferenceByEmail =  (req, res, next) => {
-    const email = req.session.email; 
-    //const email = req.body.email;
-    Preference.findOne(email)
-        // .select('email, duos, trios, squads, casual, ranked, competitions, exhibitions, funScale, riskScale email')
-        .exec()
-        .then(doc => {
+/**
+ * Function to get all users profiles
+ * @param {*} res 
+ * @param {*} req 
+ */
 
-            console.log('From database' + doc);
-            if (doc){
-                res.status(200).json({
-                    preference: doc,
-                    request:{
-                        type:'GET',
-                        url: 'http://localhost/preferences/getPreferenceById'
-                    }
-                });
-            }
-            else{
-                res.status(404).json({message: 'No valid entry found for provided ID'});
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({error: err});
-        });
+exports.getPlayersPreferences = (req, res) => {
+   // const em = req.params.email;
+
+    Preference.find()
+    .exec()
+    .then((doc)=>{
+       console.log(doc);
+       res.send(doc);
+    })
+   .catch((err)=>{
+       console.log(err);
+       res.status(500).json({error: err});
+   });
 }
+
+
+
+
+
+// exports.getPlayersPreferences = (res, req) => {
+    
+//     playerPreferences.find()
+//     //.select(' numberOfPlayers rankingMode playMode competitionMode riskMode _id')
+//     .exec()
+//     .then( docs => {
+//         const response = {
+//             count: docs.length,
+//             playerPreferences: docs.map(doc => {
+//                 return{
+//                     numberOfPlayers: doc.numberOfPlayers,
+//                     rankingMode: doc.rankingMode,
+//                     playMode: doc.playMode,
+//                     competitionMode: doc.competitionMode,
+//                     riskMode: doc.riskMode,
+//                     _id: doc._id,
+//                     request:{
+//                         type:'GET',
+//                         url:'http://localhost:3000/get_preferences' + doc._id
+//                     }
+
+//                 }
+//             })
+//         }
+//         console.log(docs);
+//             // res.status(200).json(response);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     // res.status(500).json({error: err}
+//     //     );
+//     });
+// }
+
+// exports.getPreferenceByEmail =  (req, res, next) => {
+//     const email = req.session.email; 
+//     //const email = req.body.email;
+//     Preference.findOne(email)
+//         // .select('email, duos, trios, squads, casual, ranked, competitions, exhibitions, funScale, riskScale email')
+//         .exec()
+//         .then(doc => {
+
+//             console.log('From database' + doc);
+//             if (doc){
+//                 res.status(200).json({
+//                     preference: doc,
+//                     request:{
+//                         type:'GET',
+//                         url: 'http://localhost/preferences/getPreferenceById'
+//                     }
+//                 });
+//             }
+//             else{
+//                 res.status(404).json({message: 'No valid entry found for provided ID'});
+//             }
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json({error: err});
+//         });
+// }
